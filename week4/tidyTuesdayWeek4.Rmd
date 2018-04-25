@@ -1,0 +1,107 @@
+---
+title: "Tidy Tuesday Week 4"
+author: "Sara Stoudt"
+date: "4/24/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#### Disparities in STEM 
+
+**Take-aways**
+
+1. About equal number of indivuals in scientist jobs. 
+2. Many more males in engineering jobs.
+
+(to be fair, should look into proportion of work force)
+
+3. Rough OLS interpretation: For every dollar a woman makes in science, a man makes $1.52.
+4. Rough OLS interpretation: For every dollar a woman makes in engineering, a man makes $1.26.
+
+```{r,message=FALSE, warning=FALSE}
+setwd("~/Desktop/tidytuesday/data")
+aus<-read.csv("week4_australian_salary.csv")
+
+require(ggplot2)
+require(plotly) ## use to hover and see the job names
+```
+
+### Look for STEM jobs.
+
+```{r,message=FALSE, warning=FALSE}
+aus[grep("stat",aus$occupation),] ## looking for statistics
+aus[grep("math",aus$occupation),] ## nope
+
+scientist=aus[grep("scien",aus$occupation),] ## bingo
+engineer=aus[grep("engineer",aus$occupation),]
+```
+
+Get things organized. Not particularly tidy, but bear with me. 
+
+```{r}
+scientistG=split(scientist,scientist$gender)
+engineerG=split(engineer,engineer$gender)
+
+names(scientistG[[1]])=paste("F",names(scientistG[[1]]),sep="")
+names(scientistG[[2]])=paste("M",names(scientistG[[2]]),sep="")
+
+names(engineerG[[1]])=paste("F",names(engineerG[[1]]),sep="")
+names(engineerG[[2]])=paste("M",names(engineerG[[2]]),sep="")
+
+scientistFull=cbind(scientistG[[1]],scientistG[[2]])
+engineerFull=cbind(engineerG[[1]],engineerG[[2]])
+```
+
+### Look at number of individuals in each job
+
+The line is y=x. If there was gender parity, we would see points lying around this line. You can hover to see the job titles.
+
+```{r}
+p <- ggplot(scientistFull, aes(x = Findividuals, y = Mindividuals, text =Moccupation)) +
+  geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("number of individuals")+
+  ylab("average taxable income for males ($)")+ggtitle("Science Jobs")
+p <- ggplotly(p)
+p
+```
+
+```{r}
+p <- ggplot(engineerFull, aes(x = Findividuals, y = Mindividuals, text =Moccupation)) +
+  geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("number of individuals")+
+  ylab("average taxable income for males ($)")+ggtitle("Engineer Jobs")
+p <- ggplotly(p)
+p
+```
+
+### Look at salary
+
+Again the line is y=x. If there was gender parity, we would see points lying around this line. You can hover to see the job titles.
+
+```{r}
+p <- ggplot(scientistFull, aes(x = Faverage_taxable_income, y = Maverage_taxable_income, text =Moccupation)) +
+  geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("average taxable income for females ($)")+
+  ylab("average taxable income for males ($)")+ggtitle("Science Jobs")
+p <- ggplotly(p)
+p
+```
+
+```{r}
+p <- ggplot(engineerFull, aes(x = Faverage_taxable_income, y = Maverage_taxable_income, text =Moccupation)) +
+  geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("average taxable income for females ($)")+
+  ylab("average taxable income for males ($)")+ggtitle("Engineer Jobs")
+p <- ggplotly(p)
+p
+```
+
+### Rough Modeling
+
+```{r}
+lm(scientistG[[2]]$Maverage_taxable_income~scientistG[[1]]$Faverage_taxable_income)
+```
+
+```{r}
+lm(engineerG[[2]]$Maverage_taxable_income~engineerG[[1]]$Faverage_taxable_income)
+```
