@@ -64,6 +64,7 @@ The line is y=x. If there was gender parity, we would see points lying around th
 p <- ggplot(scientistFull, aes(x = Findividuals, y = Mindividuals, text =Moccupation)) +
   geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("number of individuals")+
   ylab("average taxable income for males ($)")+ggtitle("Science Jobs")
+p ## for static version on github
 p <- ggplotly(p)
 p
 ```
@@ -72,6 +73,7 @@ p
 p <- ggplot(engineerFull, aes(x = Findividuals, y = Mindividuals, text =Moccupation)) +
   geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("number of individuals")+
   ylab("average taxable income for males ($)")+ggtitle("Engineer Jobs")
+p ## for static version on github
 p <- ggplotly(p)
 p
 ```
@@ -84,6 +86,7 @@ Again the line is y=x. If there was gender parity, we would see points lying aro
 p <- ggplot(scientistFull, aes(x = Faverage_taxable_income, y = Maverage_taxable_income, text =Moccupation)) +
   geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("average taxable income for females ($)")+
   ylab("average taxable income for males ($)")+ggtitle("Science Jobs")
+p ## for static version on github
 p <- ggplotly(p)
 p
 ```
@@ -92,6 +95,7 @@ p
 p <- ggplot(engineerFull, aes(x = Faverage_taxable_income, y = Maverage_taxable_income, text =Moccupation)) +
   geom_point() +geom_abline(intercept = 0, slope = 1)+xlab("average taxable income for females ($)")+
   ylab("average taxable income for males ($)")+ggtitle("Engineer Jobs")
+p ## for static version on github
 p <- ggplotly(p)
 p
 ```
