@@ -11,6 +11,7 @@ require(ggplot2)
 require(maps)
 require(dplyr)
 require(plotly)
+require(spotifyr)
 ```
 
 Week 5 - County-level American Community Survey (5-year estimates) 2015
@@ -20,7 +21,9 @@ Week 5 - County-level American Community Survey (5-year estimates) 2015
 [DataSource: census.gov](https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml)
 [Kaggle source](https://www.kaggle.com/muonneutrino/us-census-demographic-data)
 
-I'm building off of @AidoBo's function to plot continuous variables on a map.
+This week I am taking inspiration from the Tidy Tuesday submissions of @AidoBo and @jakekaupp.
+
+I'm slightly tweaking @AidoBo's function to plot continuous variables on a map to help me explore.
 
 <blockquote class="twitter-tweet" data-lang="en">
 <p lang="en" dir="ltr">
@@ -29,6 +32,17 @@ For <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%
 — Aidan Boland (@AidoBo) <a href="https://twitter.com/AidoBo/status/991338257391804416?ref_src=twsrc%5Etfw">May 1, 2018</a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+And inspired by @jakekaupp's work showing commute time in terms of number of Despacito listens
+
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+A blog post catching up on week 4 and week 5 of <a href="https://twitter.com/hashtag/TidyTuesday?src=hash&amp;ref_src=twsrc%5Etfw">\#TidyTuesday</a> <a href="https://t.co/AoXuNI5s0j">https://t.co/AoXuNI5s0j</a> Code available at <a href="https://t.co/kuJdBQG4pn">https://t.co/kuJdBQG4pn</a> <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">\#rstats</a> <a href="https://twitter.com/hashtag/r4ds?src=hash&amp;ref_src=twsrc%5Etfw">\#r4ds</a> <a href="https://t.co/IXjONQ0LXs">pic.twitter.com/IXjONQ0LXs</a>
+</p>
+— Jake Kaupp (@jakekaupp) <a href="https://twitter.com/jakekaupp/status/992128540396138496?ref_src=twsrc%5Etfw">May 3, 2018</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+I wanted to adapt the function from above (thanks @AidoBo) to make a commuting map for any song. We can use the spotifyr package to access the length of a given song.
+
 ``` r
 counties= map_data("county")
 state=map_data("state")
@@ -49,7 +63,6 @@ state=map_data("state")
 
 ``` r
 setwd("~/Desktop/tidytuesday/data")
-
 acs<-read.csv("acs2015_county_data.csv")
 
 head(acs)
@@ -121,6 +134,40 @@ names(acs)
 all_county<-inner_join(counties,acs %>% mutate(County=tolower(County),State=tolower(State)),by=c("subregion"="County","region"="State"))
 ```
 
+Get your own Client ID and Client Secret [here](https://beta.developer.spotify.com/documentation/web-api/).
+
+``` r
+client_id="" ## put yours here
+client_secret"" ## put yours here
+```
+
+``` r
+access_token<-get_spotify_access_token(client_id=client_id,client_secret=client_secret)
+```
+
+``` r
+county_commute_plot_tunes <-function(artist,song,access_token){
+  
+  artists <- get_artists(artist,access_token=access_token)
+  albums <- get_albums(artists$artist_uri[1],access_token=access_token)
+  tracks<-get_album_tracks(albums,access_token=access_token)
+  
+
+  track= tracks[which(grepl(song,tracks$track_name)),][1,"track_uri"]
+  
+  audio_features <- get_track_audio_features(track,access_token=access_token)
+  
+  songLength=audio_features$duration_ms/1000/60
+  
+  all_county$commuteTune=all_county$MeanCommute/songLength
+  
+  ggplot(data=counties,mapping=aes(x=long,y=lat,group=group))+
+    geom_polygon(data=all_county, aes(fill=commuteTune),color="grey")+labs(fill=paste("Song Plays Per \n Average Commute"))+scale_fill_distiller(palette="Spectral")+theme_void()+ggtitle(paste(artist,song,sep=" - "))+
+    geom_path(data=state, aes(x=long,y=lat,group=group),color="black") ## add state boundaries
+  
+}
+```
+
 Commuting
 =========
 
@@ -131,7 +178,35 @@ p=county_plot("MeanCommute")
 p
 ```
 
-![](commutingExplore_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](commutingExplore_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+We can use `ggplotly` to use hover information to identify counties of interest.
+
+``` r
+county_plotly <-function(x){
+  ## adapted from
+  
+  ##https://twitter.com/AidoBo/status/991338257391804416
+  
+  all_county$x<-all_county[,x] ## a different fix for this? something like aes_string?
+  
+  ggplot(data=counties,mapping=aes(x=long,y=lat,group=group))+
+    geom_polygon(data=all_county, aes(fill=x,region=region,subregion=subregion),color="grey")+labs(fill=x)+scale_fill_distiller(palette="Spectral")+theme_void()+
+    geom_path(data=state, aes(x=long,y=lat,group=group),color="black") ## add state boundaries
+  
+}
+
+test=county_plotly("MeanCommute")
+ggplotly(test,tooltip=c("region","subregion"))
+```
+
+**Must be the money?**
+
+``` r
+county_commute_plot_tunes("Nelly","Ride Wit Me",access_token)
+```
+
+![](commutingExplore_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 **Where can commuting make you make more money?**
 
@@ -142,11 +217,10 @@ p <- ggplot(acs, aes(x = MeanCommute, y = IncomePerCap, text =paste(County,State
 p ## static for GitHub
 ```
 
-![](commutingExplore_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](commutingExplore_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 ``` r
-#p <- ggplotly(p) ## hover to see county/state ids
-#p
+#ggplotly(p)
 ```
 
 Can we get a rough idea of where it does and doesn't pay to commute on a map instead of relying on hovering?
@@ -160,26 +234,34 @@ acsM=merge(acs,averagesByState,by.x="State",by.y="State",all.x=T)
 
 acs$goodCommuteIncomeLevels=rep(0, nrow(acs))
 acs$goodCommuteIncomeLevels[which(acsM$IncomePerCap>acsM$avgIncomePerCap & acsM$MeanCommute < acsM$avgMeanCommute)]=1
+acs$goodCommuteIncomeLevels=as.factor(acs$goodCommuteIncomeLevels)
 
 all_county<-inner_join(counties,acs %>% mutate(County=tolower(County),State=tolower(State)),by=c("subregion"="County","region"="State"))
 
-#all_county$goodCommuteIncomeLevels=as.factor(all_county$goodCommuteIncomeLevels)
-county_plot("goodCommuteIncomeLevels") ## need to make this discrete
+## need a discrete version of the map
+ggplot(data=counties,mapping=aes(x=long,y=lat,group=group))+
+    geom_polygon(data=all_county, aes(fill=goodCommuteIncomeLevels),color="grey")+labs(fill="Good Commuter Given Income")+scale_fill_discrete()+theme_void()+
+    geom_path(data=state, aes(x=long,y=lat,group=group),color="black") ## add state boundaries
 ```
 
-![](commutingExplore_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](commutingExplore_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
-Work at Home
+Work At Home
 ============
-
-What are these hot spots?
 
 ``` r
 p=county_plot("WorkAtHome") 
 p
 ```
 
-![](commutingExplore_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](commutingExplore_files/figure-markdown_github/unnamed-chunk-13-1.png)
+
+Again we could use `ggplotly` to identify hot spots?
+
+``` r
+test=county_plotly("WorkAtHome")
+ggplotly(test,tooltip=c("region","subregion"))
+```
 
 A lot could be going on here, so I don't want to read to much into this plot. For example, we don't have income per person, so we don't know if those working from home make more or less than those in other jobs within their county. However, there are some interesting patterns here that it would be interesting to look into with data at the individual level.
 
@@ -188,15 +270,12 @@ ggplot(acs,aes(x=WorkAtHome,y=acs$IncomePerCap))+geom_point() +xlab("percentage 
   ylab("income per cap")+ggtitle("Does Working From Home Pay?")
 ```
 
-![](commutingExplore_files/figure-markdown_github/unnamed-chunk-8-1.png)
-
-Transit
-=======
-
-This is rather boring, but what is going on in Nevada?
+![](commutingExplore_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
 ``` r
-county_plot("Transit")
+county_commute_plot_tunes("Fifth Harmony","Work from Home",access_token)
 ```
 
-![](commutingExplore_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](commutingExplore_files/figure-markdown_github/unnamed-chunk-16-1.png)
+
+Note: My `county_commute_plot_tunes` is not robust to capitalization. There was some trial and error involved.
