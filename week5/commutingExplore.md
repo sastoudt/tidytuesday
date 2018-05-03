@@ -138,7 +138,7 @@ Get your own Client ID and Client Secret [here](https://beta.developer.spotify.c
 
 ``` r
 client_id="" ## put yours here
-client_secret"" ## put yours here
+client_secret="" ## put yours here
 ```
 
 ``` r
