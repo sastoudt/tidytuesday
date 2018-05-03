@@ -15,6 +15,14 @@ require(tidyr)
 require(RColorBrewer)
 ```
 
+Week 3 - Global causes of mortality
+===================================
+
+[RAW DATA](https://github.com/rfordatascience/tidytuesday/blob/master/data/global_mortality.xlsx)
+[Article](https://ourworldindata.org/what-does-the-world-die-from)
+[DatSource: ourworldindata.org](https://ourworldindata.org/)
+[Original Graphic](https://ourworldindata.org/what-does-the-world-die-from)
+
 Read and Clean Data
 ===================
 
