@@ -210,6 +210,8 @@ county_commute_plot_tunes("Nelly","Ride Wit Me",access_token)
 
 **Where can commuting make you make more money?**
 
+Caveat: I'm not *really* answering this question because we don't have the data at the individual level, but as an exploratory exercise...
+
 ``` r
 p <- ggplot(acs, aes(x = MeanCommute, y = IncomePerCap, text =paste(County,State,sep="-"))) +
   geom_point() +xlab("mean commute")+
@@ -263,7 +265,7 @@ test=county_plotly("WorkAtHome")
 ggplotly(test,tooltip=c("region","subregion"))
 ```
 
-A lot could be going on here, so I don't want to read to much into this plot. For example, we don't have income per person, so we don't know if those working from home make more or less than those in other jobs within their county. However, there are some interesting patterns here that it would be interesting to look into with data at the individual level.
+A lot could be going on here, so again I don't want to read too much into this plot. Since we don't have income per person we don't know if those working from home make more or less than those in other jobs within their county. However, there are some interesting patterns here that it would be interesting to look into with data at the individual level.
 
 ``` r
 ggplot(acs,aes(x=WorkAtHome,y=acs$IncomePerCap))+geom_point() +xlab("percentage working from home")+
