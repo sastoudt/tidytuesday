@@ -1,0 +1,136 @@
+---
+title: "Tidy Tuesday Week 6"
+author: "Sara Stoudt"
+date: "5/8/2018"
+output: github_document
+---
+
+#### Fueled By Dunkin
+
+```{r, include=FALSE}
+require(readxl)
+require(dplyr)
+require(maps)
+require(ggmap)
+require(fields)
+require(USAboundaries)
+require(sf)
+```
+
+```{r, eval=F}
+require(readxl)
+require(dplyr)
+require(maps)
+require(ggmap)
+require(fields)
+require(sf)
+```
+
+```{r}
+
+setwd("~/Desktop/tidytuesday/data")
+
+coffee1=read_excel("week6_coffee_chains.xlsx",sheet=1)
+coffee2=read_excel("week6_coffee_chains.xlsx",sheet=2)
+coffee3=read_excel("week6_coffee_chains.xlsx",sheet=3)
+
+## all have different columns
+
+starbucksUS=subset(coffee1,Country=="US")
+dunkinUS=subset(coffee3,e_country=="USA") ## all in US so not really needed
+```
+
+#### How far do I need to walk/drive to get my fix?
+
+I'm putting my personal biases into this, so I"m only looking at Dunkin and Starbucks within the US.
+
+```{r}
+getMeToCoffee<-function(myPoint,modePrefer,coffeePrefer){
+  if(is.character(myPoint)){
+    myPoint2=geocode(myPoint,output="latlon")
+    
+  }
+
+  if(coffeePrefer=="dunkin"){
+    toDunkin=rdist(as.matrix(myPoint2),dunkinUS[,c("loc_LONG_centroid","loc_LAT_centroid")])
+    closestDunkin=which.min(toDunkin)
+    tryThis=paste(dunkinUS$"e_address"[closestDunkin], dunkinUS$e_city[closestDunkin],",",dunkinUS$e_state[closestDunkin],sep=" ")
+    test= mapdist(myPoint,tryThis, mode = modePrefer,
+                  output = "simple", messaging = FALSE, sensor = FALSE,
+                  language = "en-EN", override_limit = FALSE)
+    ## does better with character addresses than lat longs
+    
+  }else if(coffeePrefer=="starbucks"){
+    toStarbucks=rdist(myPoint2,starbucksUS[,c("Longitude","Latitude")])
+    closestStarbucks=which.min(toStarbucks)
+   
+    tryThis=paste(starbucksUS[closestStarbucks,"Street Address"], starbucksUS$City[closestStarbucks],",",starbucksUS[closestStarbucks,"State/Province"],sep=" ")
+   test= mapdist(myPoint,tryThis, mode = modePrefer,
+         output = "simple", messaging = FALSE, sensor = FALSE,
+            language = "en-EN", override_limit = FALSE)
+  }
+  else{
+    test=NA
+  }
+  
+  return(test)
+  
+}
+
+
+```
+
+```{r,cache=T}
+getMeToCoffee("Indiana, PA","driving","dunkin") ## home
+getMeToCoffee("100 Bureau Drive, Gaithersburg MD","driving","dunkin") ## NIST address
+getMeToCoffee("Smith College, Northampton MA","walking","dunkin") 
+getMeToCoffee("Evans Hall, Berkeley CA","driving","dunkin") 
+```
+
+**Note:** We actually do have a Dunkin in good-ole Indiana, PA so all is not lost.
+
+```{r}
+#map("county","pennsylvania")
+#points(coffee3$loc_LONG_centroid,coffee3$loc_LAT_centroid,col="orange")
+#https://ryanpeek.github.io/2017-11-05-mapping-with-sf-Part-2/
+#https://github.com/tidyverse/ggplot2/issues/2071
+
+paDunkin=subset(coffee3,e_state=="PA")
+PA<-us_states( states = "pennsylvania") 
+ggplot()+geom_sf(data=PA,color="black",fill=NA)+geom_point(data=paDunkin,aes(x=loc_LONG_centroid,y=loc_LAT_centroid))+theme_void()+theme(panel.grid.major = element_line(colour = "white"))
+
+```
+
+**Plenty**
+
+```{r}
+#map("county","maryland")
+#points(coffee3$loc_LONG_centroid,coffee3$loc_LAT_centroid,col="orange")
+
+mdDunkin=subset(coffee3,e_state=="MD")
+MD<-us_states( states = "maryland") 
+ggplot()+geom_sf(data=MD,color="black",fill=NA)+geom_point(data=mdDunkin,aes(x=loc_LONG_centroid,y=loc_LAT_centroid))+theme_void()+theme(panel.grid.major = element_line(colour = "white"))
+```
+
+**Plenty**
+
+```{r}
+#map("county","massachusetts")
+#points(coffee3$loc_LONG_centroid,coffee3$loc_LAT_centroid,col="orange")
+
+maDunkin=subset(coffee3,e_state=="MA")
+MA<-us_states( states = "massachusetts") 
+ggplot()+geom_sf(data=MA,color="black",fill=NA)+geom_point(data=maDunkin,aes(x=loc_LONG_centroid,y=loc_LAT_centroid))+theme_void()+theme(panel.grid.major = element_line(colour = "white"))
+```
+
+
+**Book me a plane ticket!**
+
+```{r}
+#map("county","california")
+#points(coffee3$loc_LONG_centroid,coffee3$loc_LAT_centroid,col="orange")
+
+caDunkin=subset(coffee3,e_state=="CA")
+CA<-us_states( states = "california") 
+ggplot()+geom_sf(data=CA,color="black",fill=NA)+geom_point(data=caDunkin,aes(x=loc_LONG_centroid,y=loc_LAT_centroid))+theme_void()+theme(panel.grid.major = element_line(colour = "white"))
+```
