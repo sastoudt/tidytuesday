@@ -103,6 +103,8 @@ levels(toPlot$genderAge)
 toPlot$genderAge=factor(toPlot$genderAge,levels=levels(toPlot$genderAge)[c(2,6,3,7,4,8,1,5)]) ## GROSS!
 ```
 
+**HELP PLEASE**
+
 ``` r
 test=toPlot %>% arrange(genderAge,V28) ### HELP
 
@@ -170,6 +172,8 @@ toPlot$genderAge=factor(toPlot$genderAge,levels=levels(toPlot$genderAge)[c(2,6,3
 toPlot$V18=as.factor(toPlot$V18)
 toPlot$V18=factor(toPlot$V18,levels=levels(toPlot$V18)[c(4,6,3,1,2,5)]) ## GROSS!
 ```
+
+**HELP PLEASE**
 
 ``` r
 test=toPlot[order(toPlot$genderAge),]
