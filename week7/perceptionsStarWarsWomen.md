@@ -103,19 +103,116 @@ levels(toPlot$genderAge)
 toPlot$genderAge=factor(toPlot$genderAge,levels=levels(toPlot$genderAge)[c(2,6,3,7,4,8,1,5)]) ## GROSS!
 ```
 
-**HELP PLEASE**
+**Thanks for the help!!**
+
+From @ibddoctor: <https://t.co/193sOToMJB>
 
 ``` r
-test=toPlot %>% arrange(genderAge,V28) ### HELP
+levels(toPlot$genderAge)
+```
 
-ggplot(test,aes(V28,y=percent,fill=genderAge))+geom_bar(stat="identity",position = position_dodge2(preserve = "total"))+theme(axis.text.x=element_text(angle=45,hjust=1))+xlab("")+ggtitle("How do you feel about Padme?")+scale_fill_manual("legend",values=c("Female 18-29"="indianred","Male 18-29"="red","Female 30-44"="dodgerblue","Male 30-44" ="blue","Female 45-60"="green", "Male 45-60"="forestgreen","Female > 60" ="grey","Male > 60" ="black"))
+    ## [1] "Female 18-29" "Male 18-29"   "Female 30-44" "Male 30-44"  
+    ## [5] "Female 45-60" "Male 45-60"   "Female > 60"  "Male > 60"
+
+``` r
+ggplot(toPlot,aes(V28,y=percent,fill=genderAge,order=genderAge))+geom_bar(stat="identity",position = position_dodge2(preserve = "total"))+theme(axis.text.x=element_text(angle=45,hjust=1))+xlab("")+ggtitle("How do you feel about Padme?")+scale_fill_manual("legend",values=c("Female 18-29"="indianred","Male 18-29"="red","Female 30-44"="dodgerblue","Male 30-44" ="blue","Female 45-60"="green", "Male 45-60"="forestgreen","Female > 60" ="grey","Male > 60" ="black"))
 ```
 
 ![](perceptionsStarWarsWomen_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 ``` r
-## make colors more informative (light and dark of a color for male and female same age), rearrange levels so easier to compare
+## NOPE, but this would be ideal
 ```
+
+From @hadleywickham: try arrange()ing
+
+``` r
+toPlot$Gender=as.factor(toPlot$Gender)
+toPlot$Age=as.factor(toPlot$Age)
+
+
+levels(toPlot$genderAge) ## fine
+```
+
+    ## [1] "Female 18-29" "Male 18-29"   "Female 30-44" "Male 30-44"  
+    ## [5] "Female 45-60" "Male 45-60"   "Female > 60"  "Male > 60"
+
+``` r
+levels(toPlot$Age) ## need to relevel
+```
+
+    ## [1] "> 60"  "18-29" "30-44" "45-60"
+
+``` r
+toPlot$Age=factor(toPlot$Age,levels=levels(toPlot$Age)[c(2,3,4,1)]) ## GROSS!
+
+
+#toPlot$genderAge=factor(toPlot$genderAge,levels=levels(toPlot$genderAge)[c(2,6,3,7,4,8,1,5)]) ## GROSS!
+
+
+## if it plots one level of V28 at a time, this would make sense
+test=toPlot%>%arrange(Age,V28)
+head(test)
+```
+
+    ## # A tibble: 6 x 7
+    ## # Groups:   Gender, Age [2]
+    ##   Gender Age   V28                  count.x count.y percent genderAge   
+    ##   <fct>  <fct> <fct>                  <int>   <int>   <dbl> <fct>       
+    ## 1 Female 18-29 Unfamiliar (N/A)          10      85  0.118  Female 18-29
+    ## 2 Male   18-29 Unfamiliar (N/A)           5      93  0.0538 Male 18-29  
+    ## 3 Female 18-29 Very unfavorably           3      85  0.0353 Female 18-29
+    ## 4 Male   18-29 Very unfavorably           8      93  0.0860 Male 18-29  
+    ## 5 Female 18-29 Somewhat unfavorably       6      85  0.0706 Female 18-29
+    ## 6 Male   18-29 Somewhat unfavorably      12      93  0.129  Male 18-29
+
+``` r
+ggplot(test,aes(V28,y=percent,fill=genderAge))+geom_bar(stat="identity",position = position_dodge2(preserve = "total"))+theme(axis.text.x=element_text(angle=45,hjust=1))+xlab("")+ggtitle("How do you feel about Padme?")+scale_fill_manual("legend",values=c("Female 18-29"="indianred","Male 18-29"="red","Female 30-44"="dodgerblue","Male 30-44" ="blue","Female 45-60"="green", "Male 45-60"="forestgreen","Female > 60" ="grey","Male > 60" ="black"))
+```
+
+![](perceptionsStarWarsWomen_files/figure-markdown_github/unnamed-chunk-9-1.png)
+
+``` r
+## NOPE but closer, now all the females are together
+```
+
+**THIS IS THE ONE**
+
+![](https://media.giphy.com/media/pvDp7Ewpzt0o8/giphy.gif)
+
+Members of the older female generation are not (proportionally) Padme fans.
+
+``` r
+test=as.data.frame(toPlot%>%arrange(Age,V28))
+head(test)
+```
+
+    ##   Gender   Age                  V28 count.x count.y    percent
+    ## 1 Female 18-29     Unfamiliar (N/A)      10      85 0.11764706
+    ## 2   Male 18-29     Unfamiliar (N/A)       5      93 0.05376344
+    ## 3 Female 18-29     Very unfavorably       3      85 0.03529412
+    ## 4   Male 18-29     Very unfavorably       8      93 0.08602151
+    ## 5 Female 18-29 Somewhat unfavorably       6      85 0.07058824
+    ## 6   Male 18-29 Somewhat unfavorably      12      93 0.12903226
+    ##      genderAge
+    ## 1 Female 18-29
+    ## 2   Male 18-29
+    ## 3 Female 18-29
+    ## 4   Male 18-29
+    ## 5 Female 18-29
+    ## 6   Male 18-29
+
+``` r
+ggplot(test,aes(V28,y=percent,fill=genderAge))+geom_bar(stat="identity",position = position_dodge2(preserve = "total"))+theme(axis.text.x=element_text(angle=45,hjust=1))+xlab("")+ggtitle("How do you feel about Padme?")+scale_fill_manual("legend",values=c("Female 18-29"="indianred","Male 18-29"="red","Female 30-44"="dodgerblue","Male 30-44" ="blue","Female 45-60"="green", "Male 45-60"="forestgreen","Female > 60" ="grey","Male > 60" ="black"))
+```
+
+![](perceptionsStarWarsWomen_files/figure-markdown_github/unnamed-chunk-10-1.png)
+
+``` r
+## MAGICALLY WORKS
+```
+
+**Mystery:** Why is `as.data.frame` needed?
 
 #### Leia
 
@@ -141,7 +238,7 @@ toPlot=byCatGen%>% inner_join(byGen,by=c("Gender"="Gender"))%>%mutate(percent=co
 ggplot(toPlot,aes(V18,y=percent,fill=Gender))+geom_bar(stat="identity",position = position_dodge2(preserve = "total"))+theme(axis.text.x=element_text(angle=45,hjust=1))+xlab("")+ggtitle("How do you feel about Leia?")
 ```
 
-![](perceptionsStarWarsWomen_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](perceptionsStarWarsWomen_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 ``` r
 ## complete data only
@@ -173,19 +270,38 @@ toPlot$V18=as.factor(toPlot$V18)
 toPlot$V18=factor(toPlot$V18,levels=levels(toPlot$V18)[c(4,6,3,1,2,5)]) ## GROSS!
 ```
 
-**HELP PLEASE**
+What's up with the female youths here?!
 
 ``` r
-test=toPlot[order(toPlot$genderAge),]
+toPlot$Gender=as.factor(toPlot$Gender)
+toPlot$Age=as.factor(toPlot$Age)
 
-test=toPlot %>% arrange(V18,genderAge)
-#test=toPlot %>% arrange(genderAge,V18)
+
+levels(toPlot$genderAge) ## fine
+```
+
+    ## [1] "Female 18-29" "Male 18-29"   "Female 30-44" "Male 30-44"  
+    ## [5] "Female 45-60" "Male 45-60"   "Female > 60"  "Male > 60"
+
+``` r
+levels(toPlot$Age) ## need to relevel
+```
+
+    ## [1] "> 60"  "18-29" "30-44" "45-60"
+
+``` r
+toPlot$Age=factor(toPlot$Age,levels=levels(toPlot$Age)[c(2,3,4,1)]) ## GROSS!
+
+
+## if it plots one level of V18 at a time, this would make sense
+test=as.data.frame(toPlot%>%arrange(Age,V18))
+
 
 
 ggplot(test,aes(V18,y=percent,fill=genderAge))+geom_bar(stat="identity",position = position_dodge2(preserve = "total"))+theme(axis.text.x=element_text(angle=45,hjust=1))+xlab("")+ggtitle("How do you feel about Leia?")+scale_fill_manual("legend",values=c("Female 18-29"="indianred","Male 18-29"="red","Female 30-44"="dodgerblue","Male 30-44" ="blue","Female 45-60"="green", "Male 45-60"="forestgreen","Female > 60" ="grey","Male > 60" ="black"))
 ```
 
-![](perceptionsStarWarsWomen_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](perceptionsStarWarsWomen_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
 ``` r
 ## make colors more informative (light and dark of a color for male and female same age), rearrange levels so easier to compare
@@ -203,4 +319,4 @@ ggplot(test,aes(V18,y=percent,fill=genderAge))+geom_bar(stat="identity",position
 
 5.  Normalizing by the number per category. Letting `stat="count"` was a red herring. It would be nice if there was a way to input values to normalize the fill variable by, but instead I ended up manually calculating the percentages and using `stat="identity"`.
 
-6.  [Correct and consistent ordering of colors (to match the legend)](https://github.com/tidyverse/ggplot2/issues/1472) This still isn't working, and I'm pulling my hair out. PLEASE SEND HELP!
+6.  [Correct and consistent ordering of colors (to match the legend)](https://github.com/tidyverse/ggplot2/issues/1472) Thanks for the pointers @ibddoctor and @hadleywickham!
