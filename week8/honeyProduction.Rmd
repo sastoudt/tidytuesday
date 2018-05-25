@@ -1,0 +1,136 @@
+---
+title: "Tidy Tuesday Week 8"
+author: "Sara Stoudt"
+date: "5/23/2018"
+output: github_document
+---
+
+Data: [US Honey Production](https://github.com/rfordatascience/tidytuesday/blob/master/data/week8_honey_production.zip) 
+
+Data Source: [USDA](http://usda.mannlib.cornell.edu/MannUsda/viewDocumentInfo.do?documentID=1520)
+
+Data Source:[Kaggle.com](https://www.kaggle.com/jessicali9530/honey-production) 
+
+Article: [Bee Culture](http://www.beeculture.com/u-s-honey-industry-report-2016/)
+
+Find my cleaning process for going from the three raw data files to my clean version [here](https://github.com/sastoudt/tidytuesday/blob/master/week8/honey_clean.R).
+
+It's a bit like...
+![](https://media.giphy.com/media/mzJMYiKAHF1aE/giphy.gif)
+
+```{r,warning=F,message=F}
+require(dplyr)
+require(ggplot2)
+
+setwd("~/Desktop/tidytuesday/data/week8_honey_production")
+honey=read.csv("honeyDataNice.csv",stringsAsFactors=F)
+names(honey)
+```
+
+#### By Year
+
+```{r}
+byYear=honey %>% group_by(year)%>% summarise(numColoniesT=sum(numColonies),productionT=sum(production),avgPrice=mean(avgPricePerLb),sdPrice=sd(avgPricePerLb),avgYieldPerCol=mean(yieldPerColony),sdYieldPerCol=sd(yieldPerColony),mnumColonies=mean(numColonies),mproduction=mean(production),sdnumColonies=sd(numColonies),sdproduction=sd(production))
+```
+
+**Supply and Demand**
+
+```{r}
+ggplot(byYear,aes(x=year,y=mnumColonies))+geom_point()  ## no real difference, scale is narrow
+ggplot(byYear,aes(x=year,y=sdnumColonies))+geom_point() ## increasing variability
+
+ggplot(byYear,aes(x=year,y=mproduction))+geom_point()  ## decline
+ggplot(byYear,aes(x=year,y=sdproduction))+geom_point() ## decline
+
+ggplot(byYear,aes(x=year,avgPrice))+geom_point() ## increase
+ggplot(byYear,aes(x=year,sdPrice))+geom_point() ## increase
+```
+
+**Efficiency**
+
+```{r}
+ggplot(byYear,aes(x=year,avgYieldPerCol))+geom_point() ## decline
+ggplot(byYear,aes(x=year,sdYieldPerCol))+geom_point() ## decline, but small absolute change
+```
+
+**Take-Aways**
+
+1. Variability in number of colonies is increasing.
+2. Price is increasing.
+3. Efficiency (yield/colony) is declining.
+
+
+#### By State
+
+```{r}
+byState=honey %>% group_by(state)%>% summarise(numColoniesT=sum(numColonies),productionT=sum(production),avgPrice=mean(avgPricePerLb),sdPrice=sd(avgPricePerLb),avgYieldPerCol=mean(yieldPerColony),sdYieldPerCol=sd(yieldPerColony),mnumColonies=mean(numColonies),mproduction=mean(production),sdnumColonies=sd(numColonies),sdproduction=sd(production))
+
+byState %>% arrange(desc(mnumColonies)) %>% head()
+
+byState %>% arrange(desc(mproduction)) %>% head()
+
+byState %>% arrange(desc(avgPrice)) %>% head()
+
+byState %>% arrange(desc(avgYieldPerCol)) %>% head()
+```
+
+```{r,warning=F,message=F}
+require(fiftystater)
+data("fifty_states") ## need hawaii
+state=map_data("state")
+
+toMatch=cbind.data.frame(abb=state.abb,name=tolower(state.name))
+
+toPlot=inner_join(byState,toMatch,by=c("state"="abb"))
+
+toPlot2=inner_join(fifty_states,toPlot,by=c("id"="name"))
+
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=toPlot2,aes(fill=avgPrice))+scale_fill_distiller(palette="Spectral")+theme_void()+
+  geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=toPlot2,aes(fill=mnumColonies))+scale_fill_distiller(palette="Spectral")+theme_void()+
+  geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=toPlot2,aes(fill=mproduction))+scale_fill_distiller(palette="Spectral")+theme_void()+
+  geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=toPlot2,aes(fill=avgYieldPerCol))+scale_fill_distiller(palette="Spectral")+theme_void()+
+  geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+
+```
+
+**Take-Aways**
+
+I don't know anything about honey/bees, so maybe these are obvious but I'm surprised by:
+
+1. the high price in the mid east coast states.
+2. the large number of colonies and production in North Dakota
+3. the high efficiency in Louisiana and North Dakota.
+
+
+#### By State Over Time
+
+Time for some fancy geofacets!
+
+```{r,fig.width=16,fig.height=14,warning=F,message=F}
+require(geofacet)
+toMerge=cbind.data.frame(state.abb,state.name)
+names(toMerge)=c("abb","name")
+toMerge$name=tolower(toMerge$name)
+
+toPlot=merge(honey,toMerge,by.x="state",by.y="abb")
+
+ggplot(toPlot,aes(year,numColonies))+geom_point()+facet_geo(~state)
+ggplot(toPlot,aes(year,yieldPerColony))+geom_point()+facet_geo(~state)
+ggplot(toPlot,aes(year,production))+geom_point()+facet_geo(~state)
+ggplot(toPlot,aes(year,avgPricePerLb))+geom_point()+facet_geo(~state)
+
+
+```
+
+**Take-Aways**
+
+1. Number of Colonies and Production: North Dakota is on the rise; California is on the decline.
+2. Louisiana's high efficiency is on the decline while Mississippi's is on the rise. Florida and Hawaii are also suffering.
+3. Price increases are fairly similar across all of the states.
+
