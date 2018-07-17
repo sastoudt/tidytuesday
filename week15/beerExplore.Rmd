@@ -1,0 +1,163 @@
+---
+title: "Tidy Tuesday Week 15"
+author: "Sara Stoudt"
+date: "7/16/2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Week 15
+
+[Craft Beer USA](https://github.com/rfordatascience/tidytuesday/tree/master/data)
+
+[data.world](https://data.world/)
+
+[thrillist.com](https://www.thrillist.com/news/nation/most-craft-breweries-by-state-united-states)
+
+
+```{r,warning=F,message=F}
+require(readxl)
+require(dplyr)
+require(ggplot2)
+require(stringr)
+```
+
+```{r}
+setwd("~/Desktop/tidytuesday/data")
+beers=read_excel("week15_beers.xlsx",sheet=1)
+brewer=read_excel("week15_beers.xlsx",sheet=2)
+beer=inner_join(beers,brewer,by =c("brewery_id"="id"))
+```
+
+
+```{r}
+byState=beer %>% group_by(state) %>% summarise(numBrewer=length(unique(brewery_id)),count=n(),mabv=mean(abv,na.rm=T))
+counties= map_data("county")
+state=map_data("state")
+
+stateInfo=cbind.data.frame(abb=state.abb,name=tolower(state.name))
+
+state=inner_join(state,stateInfo,by=c("region"="name"))
+
+all_state=inner_join(state,byState,by=c("abb"="state"))
+
+```
+
+
+This palette isn't very visually appealing, but in the spirit of beer, I'll use it anyway.
+
+```{r}
+#https://www.reddit.com/r/beer/comments/4gd24e/the_hex_colour_palette_of_beer/
+beerPal=c("#F3F993","#F5F75C","#F6F513","#EAE615","#E0D01B","#D5BC26","#CDAA37","#C1963C","#BE8C3A","#BE823A","#C17A37","#BF7138","#BC6733","#B26033","#A85839","#985336","#8D4C32","#7C452D","#6B3A1E","#5D341A","#4E2A0C","#4A2727","#361F1B","#261716","#231716","#19100F","#16100F","#120D0C","#100B0A","#050B0A")  
+```
+
+## Where to Bar Crawl?
+
+```{r}
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=all_state, aes(fill=mabv),color="grey")+labs(fill="mabv")+scale_fill_gradientn(colors=beerPal)+theme_void()+geom_path(data=state, aes(x=long,y=lat,group=group),color="black")+ggtitle("Where is the beer strongest?")
+```
+
+A stark (and believable) difference between Nevada and Utah.
+
+```{r}
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+
+geom_polygon(data=all_state, aes(fill=numBrewer),color="grey")+labs(fill="numBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+geom_path(data=state, aes(x=long,y=lat,group=group),color="black") +ggtitle("Where are the most breweries?")
+```
+
+Colorado maintains it's reputation.
+
+```{r}
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=all_state, aes(fill=count/numBrewer),color="grey")+labs(fill="beerPerBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+
+geom_path(data=state, aes(x=long,y=lat,group=group),color="black")+ggtitle("Where is the largest variety?")
+```
+
+Surprisingly Kansas is where it is at!
+
+```{r}
+beer %>% group_by(city,state) %>% summarise(count=n(),numBrewer=length(unique(brewery_id))) %>% arrange(desc(count))
+beer %>% group_by(city,state) %>% summarise(count=n(),numBrewer=length(unique(brewery_id))) %>% arrange(desc(numBrewer))
+```
+
+Somebody please tell me about the hidden gem of Grand Rapids. Apparently, it is [Beer City, USA](https://www.experiencegr.com/things-to-do/beer-city/).
+ 
+
+## Styles
+
+There are too many styles, so I pick some major ones and investigate them.
+
+```{r}
+stout=beer[str_detect(beer$style,"Stout"),] 
+american=beer[str_detect(beer$style,"American"),]
+ipa=beer[str_detect(beer$style,"IPA"),]
+```
+
+
+**True American?**
+
+```{r}
+byStateA=american %>% group_by(state) %>% summarise(numBrewer=length(unique(brewery_id)),count=n(),mabv=mean(abv,na.rm=T))
+
+all_state=inner_join(state,byStateA,by=c("abb"="state"))
+  
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=all_state, aes(fill=numBrewer),color="grey")+labs(fill="numBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+geom_path(data=state, aes(x=long,y=lat,group=group),color="black")
+  
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=all_state, aes(fill=count/numBrewer),color="grey")+labs(fill="beerPerBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+```
+
+Mississippi: American Beer's Hearland
+
+
+**Representing my namesake**
+
+```{r}
+
+byStateS=stout %>% group_by(state) %>% summarise(numBrewer=length(unique(brewery_id)),count=n(),mabv=mean(abv,na.rm=T))
+  
+all_state=inner_join(state,byStateS,by=c("abb"="state"))
+  
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=all_state, aes(fill=numBrewer),color="grey")+labs(fill="numBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+  
+  
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=all_state, aes(fill=count/numBrewer),color="grey")+labs(fill="beerPerBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+```
+
+What's up with some states having no stouts?!
+
+
+
+**The controversial IPA**
+
+```{r}
+byStateI=ipa %>% group_by(state) %>% summarise(numBrewer=length(unique(brewery_id)),count=n(),mabv=mean(abv,na.rm=T))
+  
+all_state=inner_join(state,byStateI,by=c("abb"="state"))
+  
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+geom_polygon(data=all_state, aes(fill=numBrewer),color="grey")+labs(fill="numBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+  
+  
+ggplot(data=state,mapping=aes(x=long,y=lat,group=group))+
+geom_polygon(data=all_state, aes(fill=count/numBrewer),color="grey")+labs(fill="beerPerBrewer")+scale_fill_gradientn(colors=beerPal)+theme_void()+
+geom_path(data=state, aes(x=long,y=lat,group=group),color="black") 
+  
+## what's up with Utah?
+ut=beer[which(beer$state == "UT"),]
+ut[str_detect(ut$style, "IPA"),] ## double counting
+  
+  
+```
+
+West Virginia and Arkansas are not into IPAs.
+
+### Variation in ABV
+
+Which styles have the most variation in alcohol content (of the top 20 most prevalent styles) given their average value?
+
+```{r}
+beer %>% group_by(style)%>% summarise(count=n(),coeffVarabv=mean(abv,na.rm=T)/sd(abv,na.rm=T)) %>% arrange(desc(count))  %>% head(20) %>% arrange(desc(coeffVarabv))
+```
+
+
+Fancy string matching for another time: match the beer style to the colors listed [here](https://www.twobeerdudes.com/beer/srm).
