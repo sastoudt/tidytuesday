@@ -1,0 +1,181 @@
+---
+title: "Tidy Tuesday Week 20"
+author: "Sara Stoudt"
+date: "8/18/2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r,message=F,warning=F}
+require(purrr)
+require(dplyr)
+require(ggplot2)
+require(gridExtra)
+require(stringr)
+require(readr)
+require(lubridate)
+require(data.table)
+require(tidyr)
+```
+
+This week's Tidy Tuesday uses data from [538](https://github.com/fivethirtyeight/russian-troll-tweets) that shows tweets from Russian trolls. Read more about the data [here](https://fivethirtyeight.com/features/why-were-sharing-3-million-russian-troll-tweets/).
+
+```{r}
+setwd("~/Desktop/russian-troll-tweets")
+
+files <- list.files()
+files <- files[grepl(".csv", files)]
+
+getData <- lapply(files,fread)
+
+tweet <- do.call("rbind",getData)
+```
+
+
+This analysis was inspired by Jennifer Golbeck's ["Benford's Law Applies to Online Social Networks"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0135169). Benford's Law provides the expected frequency (non-uniform) of numbers' first digits. In this paper she finds that both the number of followers and the number of following per user on Twitter follow Benford's Law. She mentions that many accounts that deviate strongly from this pattern were engaged in unusual behavior. **Does this subset of Russian troll accounts deviate from the expected pattern of Benford's law? Could this help us identify trolls in the future?**
+
+```{r}
+benford = function(d) {
+  
+  log(1+1/d,base = 10)
+  
+}
+
+expectedFreq <- benford(1:9)
+
+
+cbind.data.frame(1:9, expectedFreq)
+```
+
+
+## Overall: Snapshot of Accounts at Any Time
+
+
+First I just aggregate all tweets across the whole time period in the dataset and check the distribution of the first digit for both the followers and following. 
+
+This is an oversimplification because accounts that tweet more frequently will contribute more to the overall distribution, and the following and follower numbers per account change over time.
+
+```{r,warning=F}
+d1Following <- parse_number(str_sub(tweet$following, 1, 1)) ## get first digit
+d1Followers <- parse_number(str_sub(tweet$followers, 1, 1)) ## get first digit
+
+
+following1D <- as.vector(unname(table(d1Following[which(d1Following!=0)])/length(which(d1Following!=0))))
+followers1D <- as.vector(unname(table(d1Followers[which(d1Followers!=0)])/length(which(d1Followers!=0))))
+
+toP <- cbind.data.frame(expectedFreq, following1D, followers1D, firstDigit = as.factor(1:9))
+
+
+g1 <- ggplot(toP, aes(expectedFreq, following1D, col = firstDigit)) + geom_point(size = 3) + geom_abline(intercept = 0, slope = 1) + xlab("Expected Frequency \n Benford's Law") + ylab("Empirical Frequency \n of First Digit") + ggtitle("Number of Following")
+
+g2 <- ggplot(toP, aes(expectedFreq, followers1D, col = firstDigit)) + geom_point(size = 3) + geom_abline(intercept = 0, slope = 1) + xlab("Expected Frequency \n Benford's Law")+ylab("Empirical Frequency \n of First Digit") + ggtitle("Number of Followers")
+
+
+grid.arrange(g1, g2, ncol = 2)
+
+```
+
+**The distribution of following (under the account owner's control) follows the expected distribuiton of first digits fairly well. However, the distribution of followers (which is less easily manipulated by the acocunt owner) shows that smaller numbers of followers (e.g. first digit equal to one) are overrepresented while larger numbers of followers are underrepresented.** 
+
+
+## Change Over Time Per Account
+
+Now I break up the tweets by month-year chunks and get an average number of followers and following per account in each. I'm curious if accounts get closer to what we expect over time.
+
+```{r}
+tweet <- tweet %>% separate(publish_date,c("date","time"),sep=" ")
+tweet$date <- parse_date(tweet$date,format="%m/%d/%Y")
+tweet$month <- month(tweet$date)
+tweet$year <- year(tweet$date)
+
+tweet2 <- subset(tweet,year>=2015 & year<2018) ## beyond this time period, the bins are too sparse
+
+## still variation within this time period per author
+toP = tweet2 %>% group_by(year, month, author) %>% summarise(mFollowing = mean(following), mFollower = mean(followers), sdFollowing = sd(following), sdFollower = sd(followers)) #%>% 
+
+toP$ym <- paste(toP$year,toP$month,sep="_")  
+  
+byChunk <- split(toP,toP$ym)  
+
+helper <- function(x) {
+  test <- parse_number(str_sub(x, 1, 1))
+  as.vector(unname(table(test[which(test!=0)])/length(which(test!=0))))
+} ## get distribution of first digits for a vector x
+
+
+## per chunk
+followingD <- map(map(byChunk, ~.x$mFollowing), helper)
+followerD <- map(map(byChunk, ~.x$mFollower), helper)
+```
+
+## Difference Between Expected and Observed Distribution of First Digits
+
+
+```{r}
+## last two months of 2017 are missing a bin
+diffFollowing <- map(followingD[1:26], ~.x-expectedFreq)
+
+
+diffFollowingD <- do.call("rbind", diffFollowing)
+diffFollowingD <- as.data.frame(diffFollowingD)
+diffFollowingD$ym <- names(diffFollowing)
+
+
+toP <- diffFollowingD %>% gather(digit,diff,-ym) %>% separate(ym,c("year","month"),sep="_") %>% mutate(digit = parse_number(digit)) %>% mutate(date = as.Date(paste(year, month, "01", sep = "-")))
+```
+
+```{r}
+## last two months of 2017 are missing a bin
+diffFollower <- map(followerD[1:26], ~.x-expectedFreq)
+
+diffFollowerD <- do.call("rbind", diffFollower)
+diffFollowerD <- as.data.frame(diffFollowerD)
+diffFollowerD$ym <- names(diffFollower)
+
+
+toP2 <- diffFollowerD %>% gather(digit,diff,-ym) %>% separate(ym,c("year","month"),sep="_") %>% mutate(digit = parse_number(digit)) %>% mutate(date = as.Date(paste(year, month, "01", sep = "-")))
+```
+
+## Assessing How Weird is Actually Weird
+
+Before I plot the differences, I want to know how big a difference would actually be surprising since I expect variation even if Benford's Law does apply. I draw samples from the distribution expected by Benford's law (with sample size equal to the number of unique accounts in the data set). The dashed lines in the plots show the 97% empirical intervals from this simulated data. This is where we would expect differences to lie if the data actually follow Benford's Law.
+
+```{r}
+sampleSize=length(unique(tweet2$author))
+
+simD=rerun(1000,table(sample(1:9,sampleSize,prob = expectedFreq,replace=T))/sampleSize)
+
+diffSim=map(simD,~.x-expectedFreq)
+
+toAdd=cbind.data.frame(m=apply(do.call("rbind",diffSim),2,mean),q25=apply(do.call("rbind",diffSim),2,quantile,.025),q75=apply(do.call("rbind",diffSim),2,quantile,.975),digit=1:9)
+
+
+toP1b=merge(toP,toAdd,by.x="digit",by.y="digit")
+toP2b=merge(toP2,toAdd,by.x="digit",by.y="digit")
+```
+
+
+```{r}
+ggplot(toP1b,aes(date,diff))+geom_point()+geom_line()+geom_hline(data=toP1b,aes(yintercept=q25),lty=2)+geom_hline(data=toP1b,aes(yintercept=q75),lty=2)+facet_wrap(~digit)+xlab("")+ylab("Observed Proportion - Expected Proportion")+ggtitle("Following: Differences by Digit")
+
+ggplot(toP2b,aes(date,diff))+geom_point()+geom_line()+geom_hline(data=toP2b,aes(yintercept=q25),lty=2)+geom_hline(data=toP2b,aes(yintercept=q75),lty=2)+facet_wrap(~digit)+xlab("")+ylab("Observed Proportion - Expected Proportion")+ggtitle("Follower: Differences by Digit")
+```
+
+**For both the following and follower distributions we see much larger deviations than we would expect due to chance, especially for 1, 2, and 3. There does seem to be some fluctuation over time.**
+
+## Take-Aways
+
+The Russian troll accounts do not follow Benford's Law in either their follower or following numbers. This could be a way to help identify trolls in the future. The following distribution could be manipulated to better match what we expect, but it would be harder to tamper with the follower distribution.
+
+## Ideas for Next Steps
+
+- Look into the similar laws for beyond the first digit.
+- Compare to a sample of "normal" tweets from the same time period (make sure the differences we see here actually are bigger).
+- Dig into specific time periods when important events happened in the election season.
+
+
+#### Feedback, questions, comments, etc. are welcome (@sastoudt). 
