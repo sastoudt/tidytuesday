@@ -60,6 +60,7 @@ Want to submit an interesting dataset? Please open an [Issue](https://github.com
 | 21 | `2018-08-21` | [California Fires](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-08-21) | [BuzzFeed.com](https://github.com/BuzzFeedNews/2018-07-wildfire-trends) | [BuzzFeed News - California Fires](https://www.buzzfeednews.com/article/peteraldhous/california-wildfires-people-climate), [RMarkdown](https://buzzfeednews.github.io/2018-07-wildfire-trends/)|
 | 22 | `2018-08-28` | [NFL Stats](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-08-28) | [pro-football-reference.com](https://www.pro-football-reference.com/) | [eldo.co](https://www.eldo.co/nfl-rushing-and-passing-in-four-charts.html)|
 | 23 | `2018-09-04` | [Fast Food Calories](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-09-04) | [fastfoodnutrition.org](https://fastfoodnutrition.org/) | [franchiseopportunities.com](https://www.franchiseopportunities.com/blog/general-franchise-information/fast-food-calorie-comparison-charts)|
+| 24 | `2018-09-11` | [Cats vs Dogs (USA)](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-09-11) | [data.world](https://data.world/datanerd/cat-vs-dog-popularity-in-u-s) | [Washington Post](https://www.washingtonpost.com/news/wonk/wp/2014/07/28/where-cats-are-more-popular-than-dogs-in-the-u-s-and-all-over-the-world/?utm_term=.b50cb49b78b5)|
 ***  
 
 # Useful links
@@ -69,6 +70,10 @@ Want to submit an interesting dataset? Please open an [Issue](https://github.com
 [The R for Data Science textbook](http://r4ds.had.co.nz/)
 
 [Carbon lets you post beautiful code directly to Twitter!](https://carbon.now.sh/)
+
+[Post to Carbon.now.sh from RStudio](https://github.com/MilesMcBain/gistfo)
+
+[Another carbon.now.sh from within RStudio](https://github.com/yonicd/carbonate)
 
 [We will use the fivethirtyeight package frequently for “tame" data](https://cran.r-project.org/web/packages/fivethirtyeight/fivethirtyeight.pdf)
 
