@@ -1,0 +1,137 @@
+---
+title: "Tidy Tuesday Week 23"
+author: "Sara Stoudt"
+date: "9/12/2018"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[Data](https://github.com/rfordatascience/tidytuesday/tree/master/data/2018-09-04) 
+
+[Article](https://fastfoodnutrition.org/) 
+
+[Data Source](https://www.franchiseopportunities.com/blog/general-franchise-information/fast-food-calorie-comparison-charts)
+
+
+```{r,warning=F,message=F}
+require(ggplot2)
+require(dplyr)
+require(gridExtra)
+require(tidyr)
+
+setwd("~/Desktop/tidytuesday/data/2018-09-04")
+
+ff = read.csv("fastfood_calories.csv", stringsAsFactors = F)
+
+ff = ff[,-c(1, ncol(ff))] ## remove salad (all the same) and X
+```
+
+I wanted a simple way to group items across restaurants, so I'm going to follow [this]( https://stackoverflow.com/questions/21511801/text-clustering-with-levenshtein-distances) example and use hierarchical clustering via the [Levenshtein Distance](https://en.wikipedia.org/wiki/Levenshtein_distance) (typically used for string distances).
+
+```{r}
+d  <- adist(ff$item) 
+rownames(d) <- ff$Item
+hc <- hclust(as.dist(d))
+df <- data.frame(ff,cut = cutree(hc, k = 10)) ## 10 is a totally arbitrary choice
+```
+
+Let's see what groups we end up with.
+
+```{r}
+unlist(lapply(split(df,df$cut), nrow))
+lapply(split(df[,c("cut","item","restaurant")], df$cut), head, 15)
+## should be purrr-ing
+```
+
+First things first, the Doritos + Tacobell pairing is in a league of its own. 
+
+![](https://media.giphy.com/media/xGR4QD7ncz9QY/giphy.gif)
+
+Just from looking at the top 15:
+
+Group 1: chicken
+
+Group 2: sandwiches (no chicken) [but chicken items are in here, just not in head]
+
+Group 3: chicken sandwiches
+
+Group 4: chicken
+
+Group 5: chicken salads
+
+Group 6: doubles
+
+Group 7: chicken salads with dressing 
+
+Group 8: salad with dressing
+
+Group 9: Subway 
+
+Group 10: Doritos + Tacobell
+
+Where are the other Subway items? Where are the Arby's items hiding?
+
+```{r}
+lapply(split(df, df$restaurant), 
+       function(x){x %>% group_by(cut) %>% summarise(count=n()) %>% mutate(prop = count/sum(count))})
+```
+
+Most of the Subway and Arby's items are in the biggest group. Increasing the number of clusters would eventually break this group up further.
+
+What makes some restaraunts more spread out across groups than others? Since the distance metric counts additions, deletions, and substitutions, there is some dependence on the length of the item name.
+
+```{r}
+ff$len = nchar(ff$item)
+ggplot(ff,aes(len, col = restaurant, group = restaurant)) + geom_density()
+```
+
+Hm... nothing is jumping out at me here. 
+
+Are there differences in nutrient levels across clusters? I'm going to color the clusters that I preliminarily marked as "salad" groups to see if they are healthier. Remember, that these groups have all salads, but there are salads in other groups.
+
+
+```{r,warning=F,message=F}
+toP = df %>% group_by(cut) %>% summarise_if(is.numeric,mean,na.rm=T) %>% gather(nutrient,value,-cut)
+
+toP$isSalad = as.factor(ifelse(toP$cut %in% c(5,7,8), 1, 0))
+
+ggplot(toP, aes(as.factor(cut), value, col = isSalad)) + geom_col() + facet_wrap(~nutrient,scales="free_y") + xlab("cluster") + ylab("mean value")
+```
+
+The purely salad groups still have fairly high cholesterol and saturated fat levels. They also have high values of vitamin A and C though, so it's not all bad. 
+
+
+Why are chicken items so spread out among groups? Again, is this due to a difference in the length of item description? We can also see the distribution of distances between an item and all other items by whether or not the item has "chicken" in it to see if that gives us any clues. 
+
+```{r}
+dim(d) ## distance between each item and every other item
+dim(ff)
+
+ff$med = apply(d,1,median)
+ff$max = apply(d,1,max)
+ff$sd = apply(d,1,sd)
+
+ff$isChicken = as.factor(ifelse(grepl("Chicken", ff$item), 1 , 0))
+ff$len = nchar(ff$item)
+
+g1 = ggplot(ff, aes(med, col = isChicken, group = isChicken)) + geom_density() + xlab("median string distance between other items")
+g2 = ggplot(ff, aes(max, col = isChicken, group = isChicken)) + geom_density() + xlab("max string distance between other items")
+g3 = ggplot(ff, aes(sd, col = isChicken, group = isChicken)) + geom_density() + xlab("sd string distance between other items")
+g4 = ggplot(ff, aes(len, col = isChicken, group = isChicken)) + geom_density() + xlab("length of item name")
+
+grid.arrange(g1, g2, g3, g4, ncol = 2)
+```
+
+Chicken items do seem to be further in string distance from other items than non-chicken items. They also have slightly longer item name lengths. However, non-chicken items actually have higher maximum distances from other items and a wider range of variability in distances.
+
+
+
+**Disclaimer:** This is not real text analysis; I'm just using some fancy-ish tools to explore. If anyone has ideas about how to make this more rigorous, I'd be curious to learn more.
+
+
+
+
+
