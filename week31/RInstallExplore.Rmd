@@ -81,10 +81,10 @@ Note: `stringr` and `tibble` are on top of one another.
 
 **Take-Aways**
 
-- The average number of downloads of `tidyverse` is less than the average number of downloads for all of its components. This makes sense because we can either download all packages at once via `tidyverse` or download the components separately. 
+- The average number of downloads of `tidyverse` is less than the average number of downloads for each of its components. This makes sense because we can either download all packages at once via `tidyverse` or download the components separately. 
 
 - `ggplot2` has the highest average number of downloads.
 
 - `stringr` and `tibble` have similar average number of downloads.
 
-- There is some evidence of a bit of work life balance as there is a noticable drop off in downloads on Christmas.
+- There is some evidence of a bit of work life balance as there is a noticeable drop off in downloads on Christmas.
