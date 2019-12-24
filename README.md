@@ -86,7 +86,14 @@ Want to submit a useful code-chunk? Please submit as a [Pull Request](https://gi
 | 42 | `2019-10-15` | [Car Fuel Economy](data/2019/2019-10-15) | [EPA](https://www.fueleconomy.gov/feg/download.shtml) | [Ellis Hughes](https://thebioengineer.github.io/thebioengineer.github.io/2019/09/10/big-mtcars/) |
 | 43 | `2019-10-22` | [Horror movie ratings](data/2019/2019-10-22) | [IMDB](https://www.kaggle.com/PromptCloudHQ/imdb-horror-movie-dataset) | [Stephen Follows](https://stephenfollows.com/what-the-data-says-about-producing-low-budget-horror-films/) |
 | 44 | `2019-10-29` | [NYC Squirrel Census](data/2019/2019-10-29) | [Squirrel Census](https://data.cityofnewyork.us/Environment/2018-Central-Park-Squirrel-Census-Squirrel-Data/vfnx-vebw) | [CityLab](https://www.citylab.com/life/2019/06/squirrel-census-results-population-central-park-nyc/592162/) |
-
+| 45 | `2019-11-05` | [Bike & Walk Commutes](data/2019/2019-11-05) | [ACS](https://www.census.gov/library/publications/2014/acs/acs-25.html?#) | [ACS](https://www.census.gov/library/publications/2014/acs/acs-25.html?#) |
+| 46 | `2019-11-12` | [CRAN Code](data/2019/2019-11-12) | [CRAN](https://cran.r-project.org/src/contrib/) | [Phillip Massicotte](https://www.pmassicotte.com/post/analyzing-the-programming-languages-used-in-r-packages/) |
+| 47 | `2019-11-19` | [NZ Bird of the Year](data/2019/2019-11-19) | [New Zealand Forest and Bird Org](https://www.forestandbird.org.nz/) | [Dragonfly Data Science](https://www.dragonfly.co.nz/news/2019-11-12-boty.html) & [Nathan Moore](https://twitter.com/nmoorenz) |
+| 48 | `2019-11-26` | [Student Loan Debt](data/2019/2019-11-26) | [Department of Education](https://studentaid.ed.gov/sa/about/data-center/student/default) | [Dignity and Debt](https://www.dignityanddebt.org/projects/student-debt-racial-disparities/) |
+| 49 | `2019-12-03` | [Philly Parking Tickets](data/2019/2019-12-03) | [Open Data Philly](https://www.opendataphilly.org/dataset/parking-violations) | [NBC Philadelphia](https://www.nbcphiladelphia.com/news/local/Nearly-6-Million-Philadelphia-Parking-Authority-Tickets-Are-on-the-Rise-Since-2016-565438131.html) |
+| 50 | `2019-12-10` | [Replicating plots in R](data/2019/2019-12-10) | [Simply Statistics](https://simplystatistics.org/2019/08/28/you-can-replicate-almost-any-plot-with-ggplot2/) | [Rafael Irizarry](https://simplystatistics.org/2019/08/28/you-can-replicate-almost-any-plot-with-ggplot2/) |
+| 51 | `2019-12-17` | [Adoptable dogs](data/2019/2019-12-17) | [Petfinder](https://github.com/the-pudding/data/blob/master/dog-shelters/README.md) | [The Pudding](https://pudding.cool/2019/10/shelters/) |
+| 52 | `2019-12-24` | [Christmas Songs](data/2019/2019-12-24) | [Billboard Top 100](https://www.kaggle.com/sharkbait1223/billboard-top-100-christmas-carol-dataset) | [A Dash of Data](https://adashofdata.com/2014/12/21/how-christmas-songs-have-evolved-over-time/) |
 
 ***  
 
