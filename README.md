@@ -86,6 +86,17 @@ Want to submit a useful code-chunk? Please submit as a [Pull Request](https://gi
 | 14 | `2020-03-31` | [Beer Production](data/2020/2020-03-31/readme.md) | [TTB](https://www.ttb.gov/beer/statistics) | [Brewers Association](https://www.brewersassociation.org/insights/cans-bottles-craft-beer-packaging-trends/) |
 | 15 | `2020-04-07` | [Tour de France](data/2020/2020-04-07/readme.md) | [`tdf` package](https://github.com/alastairrushworth/tdf) | [Alastair Rushworth's blog](https://alastairrushworth.github.io/Visualising-Tour-de-France-data-in-R/) |
 | 16 | `2020-04-14` | [Best Rap Artists](data/2020/2020-04-14/readme.md) | [BBC Music](http://www.bbc.com/culture/story/20191007-the-greatest-hip-hop-songs-of-all-time-who-voted) | [Simon Jockers at Datawrapper](https://blog.datawrapper.de/best-hip-hop-songs-of-all-time-visualized/) |
+| 17 | `2020-04-21` | [GDPR Violation](data/2020/2020-04-21/readme.md) | [Privacy Affairs](https://www.privacyaffairs.com/gdpr-fines/) | [Roel Hogervorst](https://blog.rmhogervorst.nl/blog/2020/04/08/scraping-gdpr-fines/) |
+| 18 | `2020-04-28` | [Broadway Musicals](data/2020/2020-04-28/readme.md) | [Playbill](https://www.playbill.com/grosses) | [Alex Cookson](https://www.alexcookson.com/post/most-successful-broadway-show-of-all-time/) |
+| 19 | `2020-05-05` | [Animal Crossing](data/2020/2020-05-05/readme.md) | [Villager DB](https://github.com/jefflomacy/villagerdb) | [Polygon](https://www.polygon.com/2020/4/2/21201065/animal-crossing-new-horizons-calm-mindfulness-coronavirus-quarantine) |
+| 20 | `2020-05-12` | [Volcano Eruptions](data/2020/2020-05-12/readme.md) | [Smithsonian](https://volcano.si.edu/) | [Axios](https://www.axios.com/chart-every-volcano-that-erupted-since-krakatoa-467da621-41ba-4efc-99c6-34ff3cb27709.html) & [Wikipedia](https://en.wikipedia.org/wiki/Volcano)|
+| 21 | `2020-05-19` | [Beach Volleyball](data/2020/2020-05-19/readme.md) | [BigTimeStats](https://bigtimestats.blog/data/) | [FiveThirtyEight](https://fivethirtyeight.com/features/serving-is-a-disadvantage-in-some-olympic-sports/) & [Wikipedia](https://en.wikipedia.org/wiki/Beach_volleyball#Skills)|
+| 22 | `2020-05-26` | [Cocktails](data/2020/2020-05-26/readme.md) | [Kaggle](https://www.kaggle.com/ai-first/cocktail-ingredients) & [Kaggle](https://www.kaggle.com/jenlooper/mr-boston-cocktail-dataset) | [FiveThirtyEight](https://fivethirtyeight.com/videos/we-got-drunk-on-margaritas-for-science/) |
+| 23 | `2020-06-02` | [Marble Races](data/2020/2020-06-02/readme.md) | [Jelle's Marble Runs](https://www.youtube.com/channel/UCYJdpnjuSWVOLgGT9fIzL0g)| [Randy Olson](http://www.randalolson.com/2020/05/24/a-data-driven-look-at-marble-racing/) |
+| 24 | `2020-06-09` | [African-American Achievements](data/2020/2020-06-09/readme.md) | [Wikipedia](https://en.wikipedia.org/wiki/List_of_African-American_inventors_and_scientists) & [Wikipedia](https://en.wikipedia.org/wiki/List_of_African-American_firsts) | [David Blackwell](https://www.stltoday.com/news/local/obituaries/david-blackwell-fought-racism-became-world-famous-statistician/article_8ea41058-5f35-5afa-9c3a-007200c5c179.html) & [Petition for David Blackwell](https://www.change.org/p/american-statistical-association-rename-the-fisher-lecture-after-david-blackwell?recruiter=1107887809) |
+| 25 | `2020-06-16` | [African-American History](data/2020/2020-06-16/readme.md) | [Black Past](https://www.blackpast.org/donate/) & [Census](https://www.census.gov/content/dam/Census/library/working-papers/2002/demo/POP-twps0056.pdf) & [Slave Voyages](https://slavevoyages.org/) | [The Guardian](https://www.theguardian.com/news/2019/aug/15/400-years-since-slavery-timeline) |
+| 26 | `2020-06-23` | [Caribou Locations](data/2020/2020-06-23/readme.md) | [Movebank](https://www.movebank.org/cms/movebank-content/about-movebank) | [B.C. Ministry of Environment](https://www2.gov.bc.ca/assets/gov/environment/plants-animals-and-ecosystems/wildlife-wildlife-habitat/caribou/science_update_final_from_web_jan_2014.pdf)  |
+| 27 | `2020-06-30` | [Claremont Run of X-Men](data/2020/2020-06-30/readme.md) | [Claremont Run](http://www.claremontrun.com/) | [Wikipedia - Uncanny X-Men](https://en.wikipedia.org/wiki/Uncanny_X-Men)  |
 
 ***  
 
@@ -93,29 +104,29 @@ Want to submit a useful code-chunk? Please submit as a [Pull Request](https://gi
 
 | Link | Description |
 | --- | --- |
-| [:link:](https://www.rfordatasci.com) | The R4DS Online Learning Community Website|
-| [:link:](http://r4ds.had.co.nz/) | The R for Data Science textbook |
-| [:link:](https://carbon.now.sh/) | Carbon for sharing beautiful code pics |
-| [:link:](https://github.com/MilesMcBain/gistfo) | Post gist to Carbon from RStudio |
-| [:link:](https://github.com/yonicd/carbonate) | Post to Carbon from RStudio |
-| [:link:](https://github.com/join) | Join GitHub! |
-| [:link:](https://guides.github.com/activities/hello-world/) | Basics of GitHub |
-| [:link:](https://happygitwithr.com/) | Learn how to use GitHub with R |
-| [:link:](http://ggplot2.tidyverse.org/reference/ggsave.html) | Save high-rez `ggplot2` images |
+| [Link](https://www.rfordatasci.com) | The R4DS Online Learning Community Website|
+| [Link](http://r4ds.had.co.nz/) | The R for Data Science textbook |
+| [Link](https://carbon.now.sh/) | Carbon for sharing beautiful code pics |
+| [Link](https://github.com/MilesMcBain/gistfo) | Post gist to Carbon from RStudio |
+| [Link](https://github.com/yonicd/carbonate) | Post to Carbon from RStudio |
+| [Link](https://github.com/join) | Join GitHub! |
+| [Link](https://guides.github.com/activities/hello-world/) | Basics of GitHub |
+| [Link](https://happygitwithr.com/) | Learn how to use GitHub with R |
+| [Link](http://ggplot2.tidyverse.org/reference/ggsave.html) | Save high-rez `ggplot2` images |
 
 # Useful data sources
 
 | Link | Description |
 | --- | --- |
-| [:link:](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0) | Data is Plural collection |
-| [:link:](https://github.com/BuzzFeedNews/everything/blob/master/README.md) | BuzzFeedNews GitHub |
-| [:link:](https://github.com/theeconomist/) | The Economist GitHub |
-| [:link:](https://cran.r-project.org/web/packages/fivethirtyeight/fivethirtyeight.pdf) | The `fivethirtyeight` data package 
-| [:link:](https://github.com/TheUpshot) | The Upshot by NY Times |
-| [:link:](https://github.com/baltimore-sun-data) | The Baltimore Sun Data Desk |
-| [:link:](https://github.com/datadesk) | The LA Times Data Desk |
-| [:link:](https://github.com/OpenNewsLabs/news-graphics-team) | Open News Labs |
-| [:link:](https://t.co/BMvJO2dT1o) | BBC Data Journalism team |
+| [Link](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0) | Data is Plural collection |
+| [Link](https://github.com/BuzzFeedNews/everything/blob/master/README.md) | BuzzFeedNews GitHub |
+| [Link](https://github.com/theeconomist/) | The Economist GitHub |
+| [Link](https://cran.r-project.org/web/packages/fivethirtyeight/fivethirtyeight.pdf) | The `fivethirtyeight` data package 
+| [Link](https://github.com/TheUpshot) | The Upshot by NY Times |
+| [Link](https://github.com/baltimore-sun-data) | The Baltimore Sun Data Desk |
+| [Link](https://github.com/datadesk) | The LA Times Data Desk |
+| [Link](https://github.com/OpenNewsLabs/news-graphics-team) | Open News Labs |
+| [Link](https://t.co/BMvJO2dT1o) | BBC Data Journalism team |
 
 ***
 
@@ -125,10 +136,10 @@ Only books available freely online are sourced here. Feel free to add to the lis
 
 | Link | Description |
 | --- | --- |
-| [:link:](https://serialmentor.com/dataviz/) | Fundamentals of Data Viz by Claus Wilke |
-| [:link:](https://bookdown.org/rdpeng/artofdatascience/) | The Art of Data Science by Roger D. Peng & Elizabeth Matsui |
-| [:link:](https://www.tidytextmining.com/) | Tidy Text Mining by Julia Silge & David Robinson |
-| [:link:](https://geocompr.robinlovelace.net/) | Geocomputation with R by Robin Lovelace, Jakub Nowosad, Jannes Muenchow |
-| [:link:](https://socviz.co/index.html#preface) | Data Visualization by Kieran Healy |
-| [:link:](http://www.cookbook-r.com/Graphs/) | `ggplot2` cookbook by Winston Chang |
- [:link:](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535) | BBC Data Journalism team |
+| [Link](https://serialmentor.com/dataviz/) | Fundamentals of Data Viz by Claus Wilke |
+| [Link](https://bookdown.org/rdpeng/artofdatascience/) | The Art of Data Science by Roger D. Peng & Elizabeth Matsui |
+| [Link](https://www.tidytextmining.com/) | Tidy Text Mining by Julia Silge & David Robinson |
+| [Link](https://geocompr.robinlovelace.net/) | Geocomputation with R by Robin Lovelace, Jakub Nowosad, Jannes Muenchow |
+| [Link](https://socviz.co/index.html#preface) | Data Visualization by Kieran Healy |
+| [Link](http://www.cookbook-r.com/Graphs/) | `ggplot2` cookbook by Winston Chang |
+ [Link](https://medium.com/bbc-visual-and-data-journalism/how-the-bbc-visual-and-data-journalism-team-works-with-graphics-in-r-ed0b35693535) | BBC Data Journalism team |
