@@ -2,7 +2,7 @@
 
 # Uncanny X-men
 
-The data this week comes from the [Claremont Run Project](http://www.claremontrun.com/) and Malcom Barret(https://twitter.com/malco_barrett) who put these datasets into a R data package. The Claremont Run project has a nice [Foreward](http://www.claremontrun.com/Foreword.html) capturing some of the reasoning behind this dataset. "The Claremont Run is a SSHRC-funded academic initiative micro-publishing data-based analysis of Chris Claremont's 16 year run on Uncanny X-Men #97-278."
+The data this week comes from the [Claremont Run Project](http://www.claremontrun.com/) and [Malcom Barret](https://twitter.com/malco_barrett) who put these datasets into a R data package. The Claremont Run project has a nice [Foreward](http://www.claremontrun.com/Foreword.html) capturing some of the reasoning behind this dataset. "The Claremont Run is a SSHRC-funded academic initiative micro-publishing data-based analysis of Chris Claremont's 16 year run on Uncanny X-Men #97-278."
 
 > From 1975-1991, Chris Claremont wrote X-men, forming the longest stint of any mainstream superhero writer on a single title. During his tenure, X-men went from a B-list title on the verge of cancellation, to the best-selling comic book in the world, and Claremont holds the Guinness World Record to this day for the bestselling single issue comic of all-time.
 
@@ -12,7 +12,7 @@ The data this week comes from the [Claremont Run Project](http://www.claremontru
 
 The Claremont Project has a Twitter handle - please reference them when using this data: [@ClaremontRun](https://twitter.com/ClaremontRun)
 
-Malcom Barret(https://twitter.com/malco_barrett) put these datasets into a R data package: [`claremontrun`](https://github.com/malcolmbarrett/claremontrun), which is where we got the data for this week.
+[Malcom Barret](https://twitter.com/malco_barrett) put these datasets into a R data package: [`claremontrun`](https://github.com/malcolmbarrett/claremontrun), which is where we got the data for this week.
 
 To Install the `claremontrun` package:  
 - `remotes::install_github("malcolmbarrett/claremontrun")`  
@@ -26,7 +26,7 @@ Note that while the `claremontrun` has information about the Bechdel test, it do
 
 [2018 - Week 9](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018/2018-05-29/week9_comic_characters.csv)
 
-Load that data with: `tidytuesdayR::tt_load(2020, week = 9)`
+Load that data with: `tidytuesdayR::tt_load(2018, week = 9)`
 
 These datasets could be joined by character names.
 
@@ -40,7 +40,7 @@ claremontrun includes 7 data sets relevant to the Claremont run:
   - `location`, locations that appear in each issue  
   - `xmen_bechdel`, whether or not an issue of Uncanny X-Men met the Bechdel test  
 
-The Bechdel Test according to [wikipedia](https://en.wikipedia.org/wiki/Bechdel_test):  
+The Bechdel Test according to [Wikipedia](https://en.wikipedia.org/wiki/Bechdel_test):  
 
 > The Bechdel Test is a measure of the representation of women in fiction. It asks whether a work features at least two women who talk to each other about something other than a man. The requirement that the two women must be named is sometimes added.
 > 
@@ -115,7 +115,7 @@ locations <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/
 |speech    |double    | Speech bubble in that issue |
 |thought   |double    | Thought bubble in that issue |
 |narrative |double    | Narrative statements in that issue |
-|depicted  |double    | NUmber of depictions in that issue |
+|depicted  |double    | Number of depictions in that issue |
 
 # `characters.csv`
 
