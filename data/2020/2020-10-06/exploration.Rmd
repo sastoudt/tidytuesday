@@ -13,7 +13,7 @@ knitr::opts_chunk$set(warning = FALSE)
 
 ```
 
-Original data (with codebook) [here](Data here: https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md).
+Original data (with codebook) [here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md).
 
 ```{r}
 library(dplyr)

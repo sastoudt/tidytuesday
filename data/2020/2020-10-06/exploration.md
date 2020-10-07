@@ -4,7 +4,7 @@ Sara Stoudt
 10/7/2020
 
 Original data (with codebook)
-[here](Data%20here:%20https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md).
+[here](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md).
 
 ``` r
 library(dplyr)
