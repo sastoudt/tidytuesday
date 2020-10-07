@@ -16,7 +16,7 @@ setwd("~/Desktop/tidytuesday/data/2020/2020-10-06")
 data <- read.csv("tournament.csv", stringsAsFactors = F)
 ```
 
-### Who are the best teams in 2018?
+### Table 1: Who are the best teams in 2018?
 
 ``` r
 topTeams <- data %>%
@@ -748,7 +748,7 @@ N
 
 </table>
 
-### Have they gotten better/worse/stayed the same over time?
+### Figure 1: Have they gotten better/worse/stayed the same over time?
 
 ``` r
 ggplot(subset(data, school %in% topTeams$school), aes(year, reg_percent, col = school, group = school)) + geom_point() + geom_line() + theme_minimal(base_size = 20)
@@ -756,7 +756,7 @@ ggplot(subset(data, school %in% topTeams$school), aes(year, reg_percent, col = s
 
 ![](exploration_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-### What about the best teams in 1990?
+### Table 2: What about the best teams in 1990?
 
 ``` r
 topTeamsOld <- data %>%
@@ -1488,13 +1488,15 @@ N
 
 </table>
 
+### Figure 2: Have they gotten better/worse/stayed the same over time?
+
 ``` r
 ggplot(subset(data, school %in% topTeamsOld$school), aes(year, reg_percent, col = school, group = school)) + geom_point() + geom_line() + theme_minimal(base_size = 20)
 ```
 
 ![](exploration_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
-## Let’s see one plot per school instead (these are all jumbled up).
+## Figures 3 and 4: Let’s see one plot per school instead (these are all jumbled up).
 
 ``` r
 ggplot(subset(data, school %in% topTeams$school), aes(year, reg_percent)) + geom_point() + geom_line() + facet_wrap(~school) + theme_minimal(base_size = 25)
@@ -1508,7 +1510,7 @@ ggplot(subset(data, school %in% topTeamsOld$school), aes(year, reg_percent)) + g
 
 ![](exploration_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
 
-### What about seed instead of winning percentage?
+### Figures 5 and 6: What about seed instead of winning percentage?
 
 ``` r
 ggplot(subset(data, school %in% topTeamsOld$school), aes(year, seed)) + geom_point() + geom_line() + facet_wrap(~school) + theme_minimal(base_size = 25)
@@ -1522,7 +1524,7 @@ ggplot(subset(data, school %in% topTeams$school), aes(year, seed)) + geom_point(
 
 ![](exploration_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->
 
-### How does winning championship relate to seed?
+### Figure 7: How does winning championship relate to seed?
 
 ``` r
 champ <- data %>% filter(tourney_finish == "Champ")
@@ -1552,7 +1554,7 @@ champ[which(champ$seed == 3), ]
 oddballs <- c("North Carolina", "Tennessee") ## 1994, 1997
 ```
 
-### What does their history look like?
+### Figure 8: What does their history look like?
 
 ``` r
 ggplot(subset(data, school %in% oddballs), aes(year, reg_percent)) + geom_point() + geom_line() + geom_vline(xintercept = 1994) + geom_vline(xintercept = 1997) + facet_wrap(~school)
@@ -1560,7 +1562,7 @@ ggplot(subset(data, school %in% oddballs), aes(year, reg_percent)) + geom_point(
 
 ![](exploration_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
-### Is there a relationship between seed and outcome?
+### Figure 9: Is there a relationship between seed and outcome?
 
 ``` r
 ggplot(subset(data, school %in% oddballs), aes(year, seed, col = tourney_finish)) + geom_point(size = 3) + facet_wrap(~school) + theme_minimal(base_size = 20)
@@ -1568,7 +1570,7 @@ ggplot(subset(data, school %in% oddballs), aes(year, seed, col = tourney_finish)
 
 ![](exploration_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
-### In table form how well have they done historically?
+### Tables 3 and 4: In table form how well have they done historically?
 
 ``` r
 table(subset(data, school == "North Carolina")$tourney_finish)
@@ -1586,7 +1588,7 @@ table(subset(data, school == "Tennessee")$tourney_finish)
     ##   1st   2nd Champ  N2nd   NSF    RF   RSF 
     ##     1     2     8     5     5    10     6
 
-### What about the relationship between seed and how they got into the tournament in the first place?
+### Figure 10: What about the relationship between seed and how they got into the tournament in the first place?
 
 ``` r
 ggplot(data, aes(year, seed, col = how_qual)) + geom_point() + theme_minimal(base_size = 20)
@@ -1594,7 +1596,7 @@ ggplot(data, aes(year, seed, col = how_qual)) + geom_point() + theme_minimal(bas
 
 ![](exploration_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
-### Not super enlightening, but we don’t actually care about year, so let’ try this.
+### Figure 11: Not super enlightening, but we don’t actually care about year, so let’ try this.
 
 ``` r
 ggplot(data, aes(seed)) + geom_histogram(alpha = .5) + facet_wrap(~how_qual) + theme_minimal(base_size = 20) ## interesting
