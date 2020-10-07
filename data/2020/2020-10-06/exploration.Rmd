@@ -1,0 +1,124 @@
+---
+title: "Tidy Tuesday Exploration 2020-10-06"
+author: "Sara Stoudt"
+date: "10/7/2020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=12, fig.height=8) 
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+```
+
+Original data (with codebook) [here](Data here: https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md).
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(purrr)
+library(kableExtra)
+setwd("~/Desktop/tidytuesday/data/2020/2020-10-06")
+
+data <- read.csv("tournament.csv", stringsAsFactors = F)
+```
+
+### Who are the best teams in 2018?
+
+```{r}
+topTeams <- data %>%
+  filter(year == 2018) %>%
+  arrange(desc(reg_w)) %>%
+  head(5)
+
+kable(topTeams)
+```
+
+### Have they gotten better/worse/stayed the same over time?
+
+```{r}
+ggplot(subset(data, school %in% topTeams$school), aes(year, reg_percent, col = school, group = school)) + geom_point() + geom_line() + theme_minimal(base_size = 20)
+```
+
+### What about the best teams in 1990?
+
+```{r}
+topTeamsOld <- data %>%
+  filter(year == 1990) %>%
+  arrange(desc(reg_w)) %>%
+  head(5)
+
+kable(topTeams)
+```
+
+```{r}
+ggplot(subset(data, school %in% topTeamsOld$school), aes(year, reg_percent, col = school, group = school)) + geom_point() + geom_line() + theme_minimal(base_size = 20)
+```
+
+## Let's see one plot per school instead (these are all jumbled up).
+
+```{r}
+ggplot(subset(data, school %in% topTeams$school), aes(year, reg_percent)) + geom_point() + geom_line() + facet_wrap(~school) + theme_minimal(base_size = 25)
+
+ggplot(subset(data, school %in% topTeamsOld$school), aes(year, reg_percent)) + geom_point() + geom_line() + facet_wrap(~school) + theme_minimal(base_size = 25)
+```
+
+### What about seed instead of winning percentage?
+
+```{r}
+ggplot(subset(data, school %in% topTeamsOld$school), aes(year, seed)) + geom_point() + geom_line() + facet_wrap(~school) + theme_minimal(base_size = 25)
+
+ggplot(subset(data, school %in% topTeams$school), aes(year, seed)) + geom_point() + geom_line() + facet_wrap(~school) + theme_minimal(base_size = 25)
+```
+
+### How does winning championship relate to seed?
+
+```{r}
+champ <- data %>% filter(tourney_finish == "Champ")
+
+ggplot(champ, aes(year, seed)) + geom_point() + geom_line() + theme_minimal(base_size = 25)
+```
+
+### Who are those two teams that won even though they were a 3 seed?
+
+```{r}
+champ[which(champ$seed == 3), ]
+
+oddballs <- c("North Carolina", "Tennessee") ## 1994, 1997
+```
+
+### What does their history look like?
+
+```{r}
+ggplot(subset(data, school %in% oddballs), aes(year, reg_percent)) + geom_point() + geom_line() + geom_vline(xintercept = 1994) + geom_vline(xintercept = 1997) + facet_wrap(~school)
+```
+
+### Is there a relationship between seed and outcome?
+
+```{r}
+ggplot(subset(data, school %in% oddballs), aes(year, seed, col = tourney_finish)) + geom_point(size = 3) + facet_wrap(~school) + theme_minimal(base_size = 20)
+```
+
+### In table form how well have they done historically?
+
+```{r}
+table(subset(data, school == "North Carolina")$tourney_finish)
+
+table(subset(data, school == "Tennessee")$tourney_finish)
+```
+
+
+### What about the relationship between seed and how they got into the tournament in the first place?
+
+```{r}
+ggplot(data, aes(year, seed, col = how_qual)) + geom_point() + theme_minimal(base_size = 20)
+```
+
+### Not super enlightening, but we don't actually care about year, so let' try this.
+
+```{r}
+ggplot(data, aes(seed)) + geom_histogram(alpha = .5) + facet_wrap(~how_qual) + theme_minimal(base_size = 20) ## interesting
+
+```
