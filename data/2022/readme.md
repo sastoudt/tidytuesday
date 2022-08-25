@@ -1,0 +1,40 @@
+# 2022 Data
+
+Archive of datasets and articles from the 2022 series of `#TidyTuesday` events.
+
+| Week | Date | Data | Source | Article
+| :---: | :---: | :--- | :--- | :---|
+| 1 | `2022-01-04` | Bring your own data from 2022! | | |
+| 2 | `2022-01-11` | [Bee Colony losses](2022-01-11/readme.md) | [USDA](https://usda.library.cornell.edu/concern/publications/rn301137d?locale=en) | [Bee Informed](https://beeinformed.org/2021/06/21/united-states-honey-bee-colony-losses-2020-2021-preliminary-results/) |
+| 3 | `2022-01-18` | [Chocolate Bar ratings](2022-01-18/readme.md) | [Flavors of Cacao](http://flavorsofcacao.com/chocolate_database.html) | [Will Canniford on Kaggle](https://www.kaggle.com/willcanniford/chocolate-bar-ratings-extensive-eda) |
+| 4 | `2022-01-25` | [Board games](2022-01-25/readme.md) | [Kaggle](https://www.kaggle.com/jvanelteren/boardgamegeek-reviews/version/3?select=2022-01-08.csv) | [Alyssa Goldberg](https://rpubs.com/thewiremonkey/476630) |
+| 5 | `2022-02-01` | [Dog breeds](2022-02-01/readme.md) | [American Kennel Club](https://github.com/kkakey/dog_traits_AKC) | [Vox](https://www.vox.com/2016/8/31/12715176/most-popular-dog-breeds) |
+| 6 | `2022-02-08` | [Tuskegee Airmen](2022-02-08/readme.md) | [Commemorative Airforce (CAF) by way of the VA-TUG](https://github.com/lang1023/Tuskegee-Airman-Challenge) | [Wikipedia](https://en.wikipedia.org/wiki/Tuskegee_Airmen) & [Air Force Historical Research Agency](https://github.com/lang1023/Tuskegee-Airman-Challenge/blob/main/112%20Victories_%20Aerial%20Victories%20of%20hte%20Tuskegee%20Airmen%20(1).pdf) |
+| 7 | `2022-02-15` | [`#DuBoisChallenge2022`](2022-02-15/readme.md) | [Anthony Starks](https://github.com/ajstarks/dubois-data-portraits/tree/master/challenge/2022) | [Nightingale by DVS](https://nightingaledvs.com/the-dubois-challenge/) |
+| 8 | `2022-02-22` | [World Freedom index](2022-02-22/readme.md) | [UN and Freedom House](https://github.com/ArthurCheib/analytical-politics-project/blob/main/data/tidy-data-fh-un.csv) | [Freedom House](https://freedomhouse.org/report/freedom-world/2018/democracy-crisis) |
+| 9 | `2022-03-01` | [Alternative Fuel Stations](2022-03-01/readme.md) | [US DOT](https://data-usdot.opendata.arcgis.com/datasets/usdot::alternative-fueling-stations/about) | [EIA](https://www.eia.gov/todayinenergy/detail.php?id=6050) |
+| 10 | `2022-03-08` | [Erasmus student mobility](2022-03-08/readme.md) | [Data.Europa.eu](https://data.europa.eu/data/datasets/erasmus-mobility-statistics-2014-2019-v2?locale=en) | [Wimdu.co](https://www.wimdu.co.uk/blog/discover-popular-erasmus-destinations) |
+| 11 | `2022-03-15` | [CRAN/BIOC Vignettes](2022-03-15/readme.md) | [Robert Flight GitHub](https://github.com/rmflight/vignette_analysis) | [Robert Flight GitHub](https://github.com/rmflight/vignette_analysis)|
+| 12 | `2022-03-22` | [Baby names](2022-03-22/readme.md) | [US `babynames`](http://hadley.github.io/babynames/) &  [`nzbabynames`](https://ekothe.github.io/nzbabynames/)  | [Emily Kothe's `nzbabynames` vignette](https://ekothe.github.io/nzbabynames/articles/guess_the_age.html) |
+| 13 | `2022-03-29` | [Collegiate Sports Budgets](2022-03-29/readme.md) | [Equity in Athletics Data Analysis](https://ope.ed.gov/athletics/#/datafile/list) | [NPR](https://www.npr.org/2021/10/27/1049530975/ncaa-spends-more-on-mens-sports-report-reveals) |
+| 14 | `2022-04-05` | [Digital Publications](2022-04-05/readme.md) | [Project Oasis](https://www.projectnewsoasis.com/publications) | [Project Oasis Report](https://www.projectnewsoasis.com/sites/default/files/2022-02/project-oasis-report-2021-1.pdf) |
+| 15 | `2022-04-12` | [Indoor Air Pollution](2022-04-12/readme.md) | [OurWorldInData.org](https://ourworldindata.org/indoor-air-pollution) | [OurWorldInData.org](https://ourworldindata.org/indoor-air-pollution) |
+| 16 | `2022-04-19` | [Crossword Puzzles and Clues](2022-04-19/readme.md) | [Cryptics.georgeho.org](https://cryptics.georgeho.org/) | [Towards Data Science](https://towardsdatascience.com/the-wild-world-of-crossword-data-71d560e222f5) |
+| 17 | `2022-04-26` | [Kaggle Hidden Gems](2022-04-26/readme.md) | [Kaggle](https://www.kaggle.com/code/headsortails/hidden-gems-a-collection-of-underrated-notebooks/report) | [Kaggle - Notebooks of the Week](https://www.kaggle.com/datasets/headsortails/notebooks-of-the-week-hidden-gems/discussion/317098) |
+| 18 | `2022-05-03` | [Solar/Wind utilities](2022-05-03/readme.md) | [Berkeley Lab](https://emp.lbl.gov/utility-scale-solar) | [Berkeley Lab report](https://emp.lbl.gov/sites/default/files/utility-scale_solar_2021_technical_brief.pdf) |
+| 19 | `2022-05-10` | [NYTimes best sellers](2022-05-10/readme.md) | [Post45 Data](https://data.post45.org/our-data/) | [Finding Trends in NY Times Best Sellers - Kailey Smith ](https://towardsdatascience.com/finding-trends-in-ny-times-best-sellers-55cdd891c8aa) |
+| 20 | `2022-05-17` | [Eurovision](2022-05-17/readme.md) | [Eurovision](https://eurovision.tv/) | [Tanya Shapiro](https://github.com/tashapiro/eurovision-contest) |
+| 21 | `2022-05-24` | [Women's Rugby](2022-05-24/readme.md) | [Women's Rugby - ScrumQueens](https://www.scrumqueens.com/page/results-dashboard) | [ScrumQueens](https://www.scrumqueens.com/blogs/jbirch/story-behind-our-data-hub) |
+| 22 | `2022-05-31` | [Company reputation poll](2022-05-31) | [Axios and Harris Poll](https://www.axios.com/2022/05/24/2022-axios-harris-poll-100-rankings) | [The Harris Poll](https://theharrispoll.com/partners/media/axios-harrispoll-100/) |
+| 23 | `2022-06-07` | [Pride Corporate Accountability Project](2022-06-07) | [Data For Progress](https://www.dataforprogress.org/accountable-allies) | [Data For Progress](https://www.dataforprogress.org/accountable-allies) |
+| 24 | `2022-06-14` | [US Drought](2022-06-14) | [Drought.gov](https://www.drought.gov/) | [Drought.gov report](https://www.drought.gov/historical-information?dataset=1&selectedDateUSDM=20110301&selectedDateSpi=19580901) |
+| 25 | `2022-06-21` | [Juneteenth](2022-06-21) | [WEB DuBois style by Anthony Starks](https://dataliteracy.com/anthony-starks-on-recreating-du-boiss-iconic-style/) | [Isabella Benabaye's blog on Juneteenth](https://isabella-b.com/blog/juneteenth-2020/) |
+| 26 | `2022-06-28` | [UK Gender pay gap](2022-06-28) | [gender-pay-gap.service.gov.uk](https://gender-pay-gap.service.gov.uk/) | [ons.gov.uk](https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/articles/findoutthegenderpaygapforyourjob/2016-12-09) |
+| 27 | `2022-07-05` | [San Francisco Rentals](2022-07-05) | [Kate Pennington](https://www.katepennington.org/data) | [Matrix-Berkeley](https://matrix.berkeley.edu/research-article/kate-pennington-on-gentrification-and-displacement-in-san-francisco/) |
+| 28 | `2022-07-12` | [European flights](2022-07-12) | [Eurocontrol](https://ansperformance.eu/data/) | [ec.europa.eu](https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20210914-1) |
+| 29 | `2022-07-19` | [Technology Adoption](2022-07-19) | [data.nber.org](https://data.nber.org/data-appendix/w15319/) | [www.cgdev.org](https://www.cgdev.org/sites/default/files/technology-and-development-exploration-data.pdf) |
+| 30 | `2022-07-26` | Bring your own data | None | None |
+| 31 | `2022-08-02` | [Oregon Spotted Frog](2022-08-02) |  [usgs.gov spotted frog data](https://www.sciencebase.gov/catalog/item/60ba5a00d34e86b9388d86bc) | [usgs.gov spotted-frog-article](https://www.usgs.gov/centers/forest-and-rangeland-ecosystem-science-center/science/oregon-spotted-frog) |
+| 32 | `2022-08-09` | [Ferris Wheels](2022-08-09) |  [`ferriswheels`](https://github.com/EmilHvitfeldt/ferriswheels) | [`ferriswheels`](https://github.com/EmilHvitfeldt/ferriswheels) |
+| 33 | `2022-08-16` | [Open Source Psychometrics](2022-08-16) |  [Open-Source Psychometrics Project](https://openpsychometrics.org/) | [Character Personality](https://openpsychometrics.org/tests/characters/documentation/) |
+| 34 | `2022-08-23` | [CHIP dataset](2022-08-23) |  [CHIP Dataset](https://chip-dataset.vercel.app/) | [arxiv paper](https://arxiv.org/abs/1911.11313) |
