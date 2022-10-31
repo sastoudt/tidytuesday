@@ -44,7 +44,7 @@ c. Submit the dataset as an [Issue](https://github.com/rfordatascience/tidytuesd
 2. **Create an entire TidyTuesday challenge!**  
 a. Find an interesting dataset  
 b. Find a report, blog post, article etc relevant to the data (or create one yourself!)  
-c. Let us know you're found something interesting and are working on it by filing an [Issue](https://github.com/rfordatascience/tidytuesday/issues) on our GitHub  
+c. Let us know you've found something interesting and are working on it by filing an [Issue](https://github.com/rfordatascience/tidytuesday/issues) on our GitHub  
 d. Provide a link or the raw data and a cleaning script for the data  
 e. Write a basic `readme.md` file using the minimal template below and make sure to give yourself credit! 
 
@@ -111,7 +111,7 @@ Penn State has an [article](https://accessibility.psu.edu/images/charts/) on wri
 
 > Charts, graphs and maps use visuals to convey complex images to users. But since they are images, these media provide serious accessibility issues to colorblind users and users of screen readers. See the [examples on this page](https://accessibility.psu.edu/images/charts/) for details on how to make charts more accessible.
 
-The `{rtweet}` package includes the [ability to post tweets](https://docs.ropensci.org/rtweet/reference/post_tweet.html) with alt text programatically.
+The `{rtweet}` package includes the [ability to post tweets](https://docs.ropensci.org/rtweet/reference/post_tweet.html) with alt text programmatically.
 
 Need a **reminder**? There are [extensions](https://chrome.google.com/webstore/detail/twitter-required-alt-text/fpjlpckbikddocimpfcgaldjghimjiik/related) that force you to remember to add Alt Text to Tweets with media.
 
@@ -156,6 +156,15 @@ Need a **reminder**? There are [extensions](https://chrome.google.com/webstore/d
 | 32 | `2022-08-09` | [Ferris Wheels](data/2022/2022-08-09) |  [`ferriswheels`](https://github.com/EmilHvitfeldt/ferriswheels) | [`ferriswheels`](https://github.com/EmilHvitfeldt/ferriswheels) |
 | 33 | `2022-08-16` | [Open Source Psychometrics](data/2022/2022-08-16) |  [Open-Source Psychometrics Project](https://openpsychometrics.org/) | [Character Personality](https://openpsychometrics.org/tests/characters/documentation/) |
 | 34 | `2022-08-23` | [CHIP dataset](data/2022/2022-08-23) |  [CHIP Dataset](https://chip-dataset.vercel.app/) | [arxiv paper](https://arxiv.org/abs/1911.11313) |
+| 35 | `2022-08-30` | [Pell Grants](data/2022/2022-08-30) |  [US Dept of Education](https://www2.ed.gov/finaid/prof/resources/data/pell-institution.html) | [`pell` R package](https://curious-joe.github.io/pell/articles/intro.html) |
+| 36 | `2022-09-06` | [LEGO database](data/2022/2022-09-06) |  [`rebrickable`](https://rebrickable.com/downloads/) | [`rebrickable`](https://rebrickable.com/downloads/) |
+| 37 | `2022-09-13` | [Bigfoot](data/2022/2022-09-13) |  [Data.World](https://data.world/timothyrenner/bfro-sightings-data) | [Finding Bigfoot](https://timothyrenner.github.io/datascience/2017/06/30/finding-bigfoot.html) |
+| 38 | `2022-09-20` | [Hydro Wastewater plants](data/2022/2022-09-20) |  [Macedo et al, 2022](https://essd.copernicus.org/articles/14/559/2022/#section4) | [HydroWASTE v1.0](https://figshare.com/articles/dataset/HydroWASTE_version_1_0/14847786/1) |
+| 39 | `2022-09-27` | [Artists in the USA](data/2022/2022-09-27) |  [arts.gov](https://www.arts.gov/impact/research/arts-data-profile-series/adp-31/data-tables) | [Artists in the Workforce](https://www.arts.gov/impact/research/arts-data-profile-series/adp-31) |
+| 40 | `2022-10-04` | [Product Hunt products](data/2022/2022-10-04) |  [components.one](https://components.one/datasets/product-hunt-products) | [The Gamer and the Nihilist by Andrew Thompson](https://components.one/posts/gamer-and-nihilist-product-hunt) |
+| 41 | `2022-10-11` | [Ravelry data](data/2022/2022-10-11) |  [ravelry.com](https://www.ravelry.com/account/login) | [{ravelRy} R package](https://www.kaylinpavlik.com/introducing-new-r-package-ravelry/) |
+| 42 | `2022-10-18` | [Stranger things dialogue](data/2022/2022-10-18) |  [8flix.com](https://8flix.com/stranger-things/) | [freeCodeCamp](https://www.freecodecamp.org/news/a-statistical-curiosity-voyage-through-the-emotion-of-stranger-things-e7bc8b2a6395) & ['stringr things'](https://github.com/filmicaesthetic/stringr-things) |
+| 43 | `2022-10-25` | [Great British Bakeoff](data/2022/2022-10-25) |  [bakeoff pkg](https://bakeoff.netlify.app/) | [Data Visualization in the Tidyverse - The Great Tidy Plot Off](https://alison.netlify.app/uo-tidy-bakeoff/#1) |
 
 ***  
 
