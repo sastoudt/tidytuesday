@@ -54,7 +54,7 @@ Evan [investigated](https://www.kaggle.com/code/evangower/diving-into-us-tornado
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -70,7 +70,7 @@ tornados <- tornados
 
 # Or read in the data manually
 
-tornados <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-16/tornados.csv')
+tornados <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-05-16/tornados.csv')
 ```
 
 ### Data Dictionary

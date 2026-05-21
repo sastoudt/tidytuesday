@@ -42,7 +42,7 @@ The data this week comes from [ESPN Cricinfo](https://www.espncricinfo.com/) by 
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -58,7 +58,7 @@ matches <- tuesdata$matches
 
 # Or read in the data manually
 
-matches <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-11-30/matches.csv')
+matches <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-11-30/matches.csv')
 
 ```
 ### Data Dictionary

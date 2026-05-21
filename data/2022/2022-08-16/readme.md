@@ -65,7 +65,7 @@ Also see their article: <https://openpsychometrics.org/tests/characters/document
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -81,7 +81,7 @@ characters <- tuesdata$characters
 
 # Or read in the data manually
 
-characters <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-08-16/characters.csv')
+characters <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-08-16/characters.csv')
 
 ```
 ## Dictionary

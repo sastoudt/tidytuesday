@@ -16,7 +16,7 @@ Per [WPDX](https://www.waterpointdata.org/)
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -32,7 +32,7 @@ water <- tuesdata$water
 
 # Or read in the data manually
 
-water <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-04/water.csv')
+water <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-05-04/water.csv')
 
 ```
 ### Data Dictionary

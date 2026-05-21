@@ -38,7 +38,7 @@ The data this week comes from [Wikipedia](https://en.wikipedia.org/wiki/List_of_
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -54,7 +54,7 @@ holidays <- tuesdata$holidays
 
 # Or read in the data manually
 
-holidays <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-06/holidays.csv')
+holidays <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-07-06/holidays.csv')
 
 ```
 ### Data Dictionary
@@ -80,7 +80,7 @@ holidays <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 
 Code credit goes to Isabella Velasquez.
 
-```{r}
+```r
 # Independence Days Around the World --------------------------------------
 
 # Libraries ---------------------------------------------------------------

@@ -44,7 +44,7 @@ You might also want to check out our [previous Bob Ross dataset from 2019-08-06]
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -60,7 +60,7 @@ bob_ross <- tuesdata$bob_ross
 
 # Or read in the data manually
 
-bob_ross <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-21/bob_ross.csv')
+bob_ross <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-02-21/bob_ross.csv')
 ```
 
 ### Data Dictionary

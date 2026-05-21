@@ -42,7 +42,7 @@ Example commands are available on [YouTube](https://www.youtube.com/watch?v=qotC
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -58,7 +58,7 @@ computer <- tuesdata$computer
 
 # Or read in the data manually
 
-computer <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-17/computer.csv')
+computer <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-08-17/computer.csv')
 
 ```
 ### Data Dictionary

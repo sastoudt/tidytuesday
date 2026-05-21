@@ -32,25 +32,25 @@ Temp min/max data was sourced from:
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
-rainfall <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/rainfall.csv')
-temperature <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/temperature.csv')
+rainfall <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-01-07/rainfall.csv')
+temperature <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-01-07/temperature.csv')
 
 # IF YOU USE THIS DATA PLEASE BE CAUTIOUS WITH INTERPRETATION
-nasa_fire <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/MODIS_C6_Australia_and_New_Zealand_7d.csv')
+nasa_fire <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-01-07/MODIS_C6_Australia_and_New_Zealand_7d.csv')
 
 # For JSON File of fires
 url <- "http://www.rfs.nsw.gov.au/feeds/majorIncidents.json"
 
 aus_fires <- sf::st_read(url)
 
-# Or read in with tidytuesdayR package (https://github.com/thebioengineer/tidytuesdayR)
+# Or read in with tidytuesdayR package (https://github.com/dslc-io/tidytuesdayR)
 
 # Either ISO-8601 date or year/week works!
 
-# Install via devtools::install_github("thebioengineer/tidytuesdayR")
+# Install via pak::pak("dslc-io/tidytuesdayR")
 
 tuesdata <- tidytuesdayR::tt_load('2020-01-07') 
 tuesdata <- tidytuesdayR::tt_load(2020, week = 2)
@@ -108,7 +108,7 @@ Please note that all weather station locations and metadata are in `weather_stat
 
 # Plot Fires courtesy of [Dean Marchiori](https://twitter.com/deanmarchiori/status/1212899902465822720)
 
-```{r}
+```r
 # Mapping NSW Current Incidents in R -------------------------------------------
 
 library(sf)
@@ -146,7 +146,7 @@ fires %>%
 
 # Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 library(here)
 

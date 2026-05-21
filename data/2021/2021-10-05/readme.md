@@ -36,7 +36,7 @@ The BLS also [wrote about Registered Nurses by state](https://bit.ly/2YkVioc).
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -52,7 +52,7 @@ nurses <- tuesdata$nurses
 
 # Or read in the data manually
 
-nurses <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-05/nurses.csv')
+nurses <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-10-05/nurses.csv')
 
 ```
 ### Data Dictionary

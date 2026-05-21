@@ -14,7 +14,7 @@ Please be advised that the average and median playtime is over the last two week
 
 
 ```
-video_games <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv")
+video_games <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-07-30/video_games.csv")
 
 ```
 
@@ -35,7 +35,7 @@ video_games <- readr::read_csv("https://raw.githubusercontent.com/rfordatascienc
 |median_playtime  |double    | Median playtime in minutes |
 |metascore        |double    | Metascore rating |
 
-```{r}
+```r
 library(tidyverse)
 
 # clean dataset from lizawood's github

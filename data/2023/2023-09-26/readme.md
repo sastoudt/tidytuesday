@@ -12,7 +12,7 @@ This dataset includes the number, percentage, and context of f**k used in the sh
 
 ## The Data
 
-```{r}
+```r
 # Scroll to the end of this code block to see how to recombine the data into a
 # graph!
 
@@ -27,7 +27,7 @@ richmondway <- tuesdata$richmondway
 
 # Option 2: Read directly from GitHub
 
-richmondway <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-26/richmondway.csv')
+richmondway <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-09-26/richmondway.csv')
 ```
 
 ## How to Participate
@@ -70,7 +70,7 @@ The data was collected and created as an R package by Deepsha Menghani.
 ``` r
 library(tidyverse)
 
-devtools::install_github("deepshamenghani/richmondway")
+pak::pak("deepshamenghani/richmondway")
 library(richmondway)
 
 write_csv(richmondway, "richmondway.csv")

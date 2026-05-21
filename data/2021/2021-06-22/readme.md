@@ -50,7 +50,7 @@ You just need to replace the year (ie 2020) with the specific year of interest.
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -66,7 +66,7 @@ parks <- tuesdata$parks
 
 # Or read in the data manually
 
-parks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-06-22/parks.csv')
+parks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-06-22/parks.csv')
 
 ```
 ### Data Dictionary
@@ -109,7 +109,7 @@ Note that "points" are essentially their yearly normalized values (higher points
 ### Cleaning Script
 
 
-```{r}
+```r
 library(tidyverse)
 library(pdftools)
 

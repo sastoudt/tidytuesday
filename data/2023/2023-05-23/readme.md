@@ -55,7 +55,7 @@ Squirrel data! The data this week comes from the [2018 Central Park Squirrel Cen
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -71,7 +71,7 @@ squirrel_data <- tuesdata$squirrel_data
 
 # Or read in the data manually
 
-squirrel_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-23/squirrel_data.csv')
+squirrel_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-05-23/squirrel_data.csv')
 
 ```
 

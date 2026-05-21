@@ -24,17 +24,17 @@ Data was accessed through [Movebank](https://www.movebank.org/cms/movebank-conte
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
-individuals <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-23/individuals.csv')
-locations <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-06-23/locations.csv')
+individuals <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-06-23/individuals.csv')
+locations <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-06-23/locations.csv')
 
-# Or read in with tidytuesdayR package (https://github.com/thebioengineer/tidytuesdayR)
+# Or read in with tidytuesdayR package (https://github.com/dslc-io/tidytuesdayR)
 
 # Either ISO-8601 date or year/week works!
 
-# Install via devtools::install_github("thebioengineer/tidytuesdayR")
+# Install via pak::pak("dslc-io/tidytuesdayR")
 
 tuesdata <- tidytuesdayR::tt_load('2020-06-23')
 tuesdata <- tidytuesdayR::tt_load(2020, week = 26)
@@ -97,7 +97,7 @@ individuals <- tuesdata$individuals
 
 ### Cleaning Script
 
-```{r}
+```r
 # Load libraries
 library(tidyverse)
 library(janitor)

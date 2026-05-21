@@ -13,9 +13,9 @@ Lastly, if for some reason you'd like to see the raw untranslated dataset it is 
 
 ### Grab the raw data here
 
-```{r}
-full_trains <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-02-26/full_trains.csv")
-small_trains <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-02-26/small_trains.csv") 
+```r
+full_trains <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-26/full_trains.csv")
+small_trains <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-02-26/small_trains.csv") 
 ```
 
 </br>
@@ -82,7 +82,7 @@ small_trains <- readr::read_csv("https://raw.githubusercontent.com/rfordatascien
 
 ### Spoilers - Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 
 # translated col names
@@ -118,7 +118,7 @@ trains_df %>%
 
 ```
 
-```{r}
+```r
 # gather cause for delay and create a more focused dataset
 small_df <- df %>% 
   gather(delay_cause, delayed_number, delay_cause_external_cause:delay_cause_travelers) %>% 

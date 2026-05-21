@@ -18,7 +18,7 @@ Also National Geographic has [5 Ways to help the Sherpas of Everest](https://www
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -34,9 +34,9 @@ climbers <- tuesdata$climbers
 
 # Or read in the data manually
 
-members <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-22/members.csv')
-expeditions <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-22/expeditions.csv')
-peaks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-22/peaks.csv')
+members <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-09-22/members.csv')
+expeditions <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-09-22/expeditions.csv')
+peaks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-09-22/peaks.csv')
 ```
 # Data Dictionary
 
@@ -107,7 +107,7 @@ peaks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidy
 
 ### Cleaning Script
 
-```{r}
+```r
 # Libraries
 library(tidyverse)
 library(janitor)

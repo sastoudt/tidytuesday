@@ -48,7 +48,7 @@ Additional context/details about the Survivor TV show can be found on [Wikipedia
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -64,7 +64,7 @@ summary <- tuesdata$summary
 
 # Or read in the data manually
 
-summary <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-06-01/summary.csv')
+summary <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-06-01/summary.csv')
 
 ```
 ### Data Dictionary

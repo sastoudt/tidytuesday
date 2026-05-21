@@ -53,7 +53,7 @@ The data this week comes from the [Wikipedia List of the verified oldest people]
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -69,7 +69,7 @@ centenarians <- tuesdata$centenarians
 
 # Or read in the data manually
 
-centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv')
+centenarians <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-05-30/centenarians.csv')
 
 ```
 

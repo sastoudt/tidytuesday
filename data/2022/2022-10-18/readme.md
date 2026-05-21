@@ -43,7 +43,7 @@ Wikipedia - Stranger Things episodes: <https://en.wikipedia.org/wiki/List_of_Str
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -59,7 +59,7 @@ episodes <- tuesdata$episodes
 
 # Or read in the data manually
 
-episodes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-10-18/episodes.csv')
+episodes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-10-18/episodes.csv')
 
 ```
 ### Data Dictionary

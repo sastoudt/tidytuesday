@@ -14,7 +14,7 @@ The data this week comes from the [BBC](https://www.bbc.com/news/world-55042935)
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -30,7 +30,7 @@ women <- tuesdata$women
 
 # Or read in the data manually
 
-women <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-12-08/women.csv')
+women <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-12-08/women.csv')
 
 ```
 ### Data Dictionary
@@ -48,7 +48,7 @@ women <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidy
 
 ### Cleaning Script
 
-```{r}
+```r
 # Load packages
 
 library(rvest)

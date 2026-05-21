@@ -7,13 +7,13 @@ The lyrics come courtest of Josiah Parry's [`genius`](https://github.com/josiahp
 # Get the Data
 
 ```
-christmas_songs <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-12-24/christmas_songs.csv")
+christmas_songs <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-12-24/christmas_songs.csv")
 
-christmas_lyrics <- readr::read_tsv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-12-24/christmas_lyrics.tsv")
+christmas_lyrics <- readr::read_tsv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-12-24/christmas_lyrics.tsv")
 
-# Or read in with tidytuesdayR package (https://github.com/thebioengineer/tidytuesdayR)
+# Or read in with tidytuesdayR package (https://github.com/dslc-io/tidytuesdayR)
 # Either ISO-8601 date or year/week works!
-# Install via devtools::install_github("thebioengineer/tidytuesdayR")
+# Install via pak::pak("dslc-io/tidytuesdayR")
 
 tuesdata <- tidytuesdayR::tt_load("2019-12-24")
 tuesdata <- tidytuesdayR::tt_load(2019, week = 52)
@@ -55,7 +55,7 @@ christmas_songs <- tuesdata$christmas_songs
 |line        |integer   | Line number |
 |lyric       |character | Lyric text |
 
-```{r}
+```r
 library(tidyverse)
 library(genius)
 

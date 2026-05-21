@@ -59,7 +59,7 @@ GPT Detectors Are Biased Against Non-Native English Writers. Weixin Liang, Mert 
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -75,7 +75,7 @@ detectors <- tuesdata$detectors
 
 # Or read in the data manually
 
-detectors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-18/detectors.csv')
+detectors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-07-18/detectors.csv')
 
 ```
 

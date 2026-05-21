@@ -42,7 +42,7 @@ Read the thread for context about this data!
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -58,7 +58,7 @@ founder_crops <- tuesdata$founder_crops
 
 # Or read in the data manually
 
-founder_crops <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-18/founder_crops.csv')
+founder_crops <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-04-18/founder_crops.csv')
 ```
 
 ### Data Dictionary

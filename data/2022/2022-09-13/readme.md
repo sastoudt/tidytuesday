@@ -36,7 +36,7 @@ A [bigfoot article](https://timothyrenner.github.io/datascience/2017/06/30/findi
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -52,7 +52,7 @@ bigfoot <- tuesdata$bigfoot
 
 # Or read in the data manually
 
-bigfoot <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-09-13/bigfoot.csv')
+bigfoot <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-09-13/bigfoot.csv')
 
 ```
 ### Data Dictionary

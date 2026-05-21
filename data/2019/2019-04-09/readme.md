@@ -30,11 +30,11 @@ Additionally a [gist](https://gist.github.com/johnburnmurdoch/bd20db77b258203160
 # Get the Data!
 
 ```
-player_dob <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/player_dob.csv")
+player_dob <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-04-09/player_dob.csv")
 
-grand_slams <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/grand_slams.csv")
+grand_slams <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-04-09/grand_slams.csv")
 
-grand_slam_timeline <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-09/grand_slam_timeline.csv")
+grand_slam_timeline <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-04-09/grand_slam_timeline.csv")
 ```
 
 # Data Dictionaries
@@ -74,7 +74,7 @@ grand_slam_timeline <- readr::read_csv("https://raw.githubusercontent.com/rforda
 
 To get the tournament performance at age rather than simply across time we need to `join` the Date of Birth dataset with the grandslam dataset.
 
-```{r}
+```r
 age_slams_comb <- left_join(grand_slams, player_dob, by = c("name")) %>% 
   mutate(age = tournament_date - date_of_birth) %>% # needs to be datetime
   group_by(name, age, gender) %>% 

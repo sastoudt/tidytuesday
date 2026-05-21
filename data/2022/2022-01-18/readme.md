@@ -36,7 +36,7 @@ Some analysis from 2017 on this data at [Kaggle](https://www.kaggle.com/willcann
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -52,7 +52,7 @@ chocolate <- tuesdata$chocolate
 
 # Or read in the data manually
 
-chocolate <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-01-18/chocolate.csv')
+chocolate <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-01-18/chocolate.csv')
 
 ```
 ### Data Dictionary

@@ -18,7 +18,7 @@ Note that to map the areas you will likely need to geocode by zipcode, which can
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -34,7 +34,7 @@ broadband <- tuesdata$broadband
 
 # Or read in the data manually
 
-broadband <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-05-11/broadband.csv')
+broadband <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-05-11/broadband.csv')
 
 ```
 ### Data Dictionary

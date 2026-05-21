@@ -40,7 +40,7 @@ There's some infographics from [Behance.net](https://www.behance.net/gallery/587
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -56,7 +56,7 @@ starbucks <- tuesdata$starbucks
 
 # Or read in the data manually
 
-starbucks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-12-21/starbucks.csv')
+starbucks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-12-21/starbucks.csv')
 
 ```
 ### Data Dictionary

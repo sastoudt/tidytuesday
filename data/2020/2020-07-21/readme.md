@@ -30,7 +30,7 @@ Journal article - [A Retrospective Analysis of Complaints to RSPCA Queensland, A
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -46,9 +46,9 @@ animal_outcomes <- tuesdata$animal_outcomes
 
 # Or read in the data manually
 
-animal_outcomes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-21/animal_outcomes.csv')
-animal_complaints <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-21/animal_complaints.csv')
-brisbane_complaints <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-21/brisbane_complaints.csv')
+animal_outcomes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-21/animal_outcomes.csv')
+animal_complaints <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-21/animal_complaints.csv')
+brisbane_complaints <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-07-21/brisbane_complaints.csv')
 
 ```
 ### Data Dictionary
@@ -94,7 +94,7 @@ brisbane_complaints <- readr::read_csv('https://raw.githubusercontent.com/rforda
 
 ### Cleaning Script
 
-```{r}
+```r
 
 library(tidyverse)
 library(pdftools)

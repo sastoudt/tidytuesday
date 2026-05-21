@@ -10,7 +10,7 @@ Their scraping code can be found on [GitHub](https://github.com/thebioengineer/T
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -26,7 +26,7 @@ hike_data <- tuesdata$hike_data
 
 # Or read in the data manually
 
-hike_data <- readr::read_rds(url('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-11-24/hike_data.rds'))
+hike_data <- readr::read_rds(url('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-11-24/hike_data.rds'))
 
 ```
 ### Data Dictionary
@@ -46,7 +46,7 @@ hike_data <- readr::read_rds(url('https://raw.githubusercontent.com/rfordatascie
 
 ### Cleaning Script
 
-```{r}
+```r
 library(rvest)
 library(tidyverse)
 library(here)

@@ -38,7 +38,7 @@ Miquel [wrote about](https://towardsdatascience.com/dissecting-28-years-of-europ
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -54,7 +54,7 @@ drugs <- tuesdata$drugs
 
 # Or read in the data manually
 
-drugs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-14/drugs.csv')
+drugs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-03-14/drugs.csv')
 ```
 
 ### Data Dictionary

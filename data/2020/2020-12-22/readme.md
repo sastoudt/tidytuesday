@@ -17,7 +17,7 @@ The data this week comes from [TheEconomist](https://github.com/TheEconomist/big
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -33,7 +33,7 @@ big-mac <- tuesdata$big-mac
 
 # Or read in the data manually
 
-big-mac <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-12-22/big-mac.csv')
+big-mac <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-12-22/big-mac.csv')
 
 ```
 ### Data Dictionary

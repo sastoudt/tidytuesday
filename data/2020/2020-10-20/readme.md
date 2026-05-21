@@ -18,7 +18,7 @@ NOTE - There are a few missing data points unfortunately
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -34,7 +34,7 @@ beer_awards <- tuesdata$beer_awards
 
 # Or read in the data manually
 
-beer_awards <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-10-20/beer_awards.csv')
+beer_awards <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-10-20/beer_awards.csv')
 
 ```
 ### Data Dictionary

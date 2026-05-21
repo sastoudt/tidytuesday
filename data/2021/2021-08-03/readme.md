@@ -46,7 +46,7 @@ Paralympic categories [article](https://www.paralympic.org/athletics/classificat
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -62,7 +62,7 @@ athletes <- tuesdata$athletes
 
 # Or read in the data manually
 
-athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-08-03/athletes.csv')
+athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-08-03/athletes.csv')
 
 ```
 ### Data Dictionary
@@ -85,7 +85,7 @@ athletes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 
 ### Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 library(rvest)
 

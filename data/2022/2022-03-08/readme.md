@@ -47,7 +47,7 @@ The ERASMUS program: EU programme for education, training, youth and sport
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -63,7 +63,7 @@ erasmus <- tuesdata$erasmus
 
 # Or read in the data manually
 
-erasmus <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-08/erasmus.csv')
+erasmus <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-03-08/erasmus.csv')
 
 ```
 ### Data Dictionary

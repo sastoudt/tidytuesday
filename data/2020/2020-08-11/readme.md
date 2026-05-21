@@ -18,7 +18,7 @@ For people who have not seen the show or read this series of books, [Wikipedia](
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -34,8 +34,8 @@ avatar <- tuesdata$avatar
 
 # Or read in the data manually
 
-avatar <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-11/avatar.csv')
-scene_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-11/scene_description.csv')
+avatar <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-11/avatar.csv')
+scene_description <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-11/scene_description.csv')
 
 ```
 ### Data Dictionary
@@ -67,7 +67,7 @@ This is the core dataset (scene description text moved to alternative dataset as
 
 ### Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 library(appa)
 

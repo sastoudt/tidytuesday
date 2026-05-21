@@ -52,7 +52,7 @@ Note that the authors prohibit resharing the dataset, so I've created a simple s
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -68,7 +68,7 @@ chips <- tuesdata$chips
 
 # Or read in the data manually
 
-chips <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-08-23/chips.csv')
+chips <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-08-23/chips.csv')
 
 ```
 ### Data Dictionary

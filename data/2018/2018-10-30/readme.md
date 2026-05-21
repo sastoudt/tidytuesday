@@ -2,8 +2,8 @@
 
 Anonymized package and R language downloads from the RStudio CRAN mirror.
 
-* [`r-downloads.csv`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018-10-30/r-downloads.csv) - R language downloads from RStudio CRAN mirror on last TidyTuesday for October 23, 2018. 
-* [`r_downloads_year.csv`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018-10-30/r_downloads_year.csv) - A year's worth of R language downloads from RStudio CRAN mirror between October 20, 2017 and October 20, 2018.
+* [`r-downloads.csv`](https://github.com/rfordatascience/tidytuesday/blob/main/data/2018-10-30/r-downloads.csv) - R language downloads from RStudio CRAN mirror on last TidyTuesday for October 23, 2018. 
+* [`r_downloads_year.csv`](https://github.com/rfordatascience/tidytuesday/blob/main/data/2018-10-30/r_downloads_year.csv) - A year's worth of R language downloads from RStudio CRAN mirror between October 20, 2017 and October 20, 2018.
 
 ## Data Dictionary
 Header | Description
@@ -25,7 +25,7 @@ Package downloads end up with MUCH larger metadata files and are a bit unwieldy 
 * Package and R-language downloads (anonymized)
 
 #### Here's an easy example/way to get all the URLs in R
-```{r} 
+```r 
 # Set your range of dates
 start <- as.Date('2012-10-01')
 today <- as.Date('2018-10-27')

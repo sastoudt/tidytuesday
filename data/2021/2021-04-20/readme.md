@@ -12,7 +12,7 @@ The data this week comes from [Kaggle](https://www.kaggle.com/shivamb/netflix-sh
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -28,7 +28,7 @@ netflix <- tuesdata$netflix
 
 # Or read in the data manually
 
-netflix_titles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-20/netflix_titles.csv')
+netflix_titles <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-20/netflix_titles.csv')
 
 ```
 ### Data Dictionary

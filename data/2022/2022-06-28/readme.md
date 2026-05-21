@@ -38,7 +38,7 @@ The data this week comes from [gender-pay-gap.service.gov.uk](https://gender-pay
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -54,7 +54,7 @@ paygap <- tuesdata$paygap
 
 # Or read in the data manually
 
-paygap <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-28/paygap.csv')
+paygap <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-06-28/paygap.csv')
 
 ```
 

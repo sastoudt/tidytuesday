@@ -24,7 +24,7 @@ Credit: [Florent Lavergne](https://www.behance.net/florentlavergne) and [Cédric
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -40,9 +40,9 @@ plants <- tuesdata$plants
 
 # Or read in the data manually
 
-plants <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-18/plants.csv')
-actions <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-18/actions.csv')
-threats <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-18/threats.csv')
+plants <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-18/plants.csv')
+actions <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-18/actions.csv')
+threats <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-18/threats.csv')
 
 ```
 ### Data Dictionary
@@ -104,7 +104,7 @@ threats <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/ti
 
 ### Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 library(tidytext)
 

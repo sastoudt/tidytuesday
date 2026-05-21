@@ -10,7 +10,7 @@ The data this week comes from [FiveThirtyEight](https://github.com/fivethirtyeig
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -26,7 +26,7 @@ youtube <- tuesdata$youtube
 
 # Or read in the data manually
 
-youtube <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-02/youtube.csv')
+youtube <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-02/youtube.csv')
 
 ```
 ### Data Dictionary
@@ -65,7 +65,7 @@ youtube <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/ti
 
 Note this is optional, and NOT required. I downloaded the youtube data via `httr` from the youtube API and an API key.
 
-```{r}
+```r
 library(tidyverse)
 library(tuber)
 library(rvest)

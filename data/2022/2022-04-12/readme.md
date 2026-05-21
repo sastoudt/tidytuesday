@@ -58,7 +58,7 @@ The data this week comes from [Our World in Data](https://ourworldindata.org/ind
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -74,7 +74,7 @@ indoor_pollution <- tuesdata$indoor_pollution
 
 # Or read in the data manually
 
-indoor_pollution <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-04-12/indoor_pollution.csv')
+indoor_pollution <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-04-12/indoor_pollution.csv')
 
 ```
 

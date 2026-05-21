@@ -24,7 +24,7 @@ Overall, this dataset was an exploration of pulling data from an Excel-based dat
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -40,8 +40,8 @@ energy_types <- tuesdata$energy_types
 
 # Or read in the data manually
 
-energy_types <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-04/energy_types.csv')
-country_totals <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-04/country_totals.csv')
+energy_types <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-04/energy_types.csv')
+country_totals <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-04/country_totals.csv')
 
 ```
 ### Data Dictionary
@@ -75,7 +75,7 @@ Limited to total net production, along with imports, exports, energy lost, and e
 
 ### Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 library(readxl)
 library(countrycode)

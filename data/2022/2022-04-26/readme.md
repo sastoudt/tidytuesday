@@ -54,7 +54,7 @@ To participate in the crossover challenge, please check out the [Kaggle page](ht
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -70,7 +70,7 @@ hidden_gems <- tuesdata$hidden_gems
 
 # Or read in the data manually
 
-hidden_gems <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-04-26/hidden_gems.csv')
+hidden_gems <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-04-26/hidden_gems.csv')
 
 ```
 

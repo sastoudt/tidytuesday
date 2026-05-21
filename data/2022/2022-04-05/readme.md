@@ -42,7 +42,7 @@ More articles by [NiemanLab](https://www.niemanlab.org/2020/03/the-google-backed
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -58,7 +58,7 @@ news_orgs <- tuesdata$news_orgs
 
 # Or read in the data manually
 
-news_orgs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-04-05/news_orgs.csv')
+news_orgs <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-04-05/news_orgs.csv')
 
 ```
 ### Data Dictionary

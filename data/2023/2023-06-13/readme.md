@@ -61,7 +61,7 @@ CITATION: Woodhouse, Philip; Veldwisch, Gert Jan; Brockington, Daniel; Komakech,
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -77,7 +77,7 @@ safi_data.csv <- tuesdata$`safi_data`
 
 # Or read in the data manually
 
-safi_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-13/safi_data.csv')
+safi_data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-06-13/safi_data.csv')
 ```
 
 ### Data Dictionary

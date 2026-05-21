@@ -38,7 +38,7 @@ Make sure to tag `@Emil_Hvitfeldt` so he can see all the cute dataviz y'all make
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -54,7 +54,7 @@ wheels <- tuesdata$wheels
 
 # Or read in the data manually
 
-wheels <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-08-09/wheels.csv')
+wheels <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-08-09/wheels.csv')
 
 ```
 ### Data Dictionary

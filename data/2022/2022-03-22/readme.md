@@ -36,7 +36,7 @@ Note there are datasets for USA and New Zealand, with lifetables and names for e
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -52,7 +52,7 @@ babynames <- tuesdata$babynames
 
 # Or read in the data manually
 
-babynames <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
+babynames <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-03-22/babynames.csv')
 
 ```
 ### Data Dictionary

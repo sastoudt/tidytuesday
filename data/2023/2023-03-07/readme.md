@@ -48,7 +48,7 @@ Questions that would be interesting to answer are:
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -64,7 +64,7 @@ numbats <- tuesdata$numbats
 
 # Or read in the data manually
 
-numbats <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-07/numbats.csv')
+numbats <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-03-07/numbats.csv')
 ```
 
 ### Data Dictionary

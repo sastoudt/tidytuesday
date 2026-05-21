@@ -43,7 +43,7 @@ We directly included two of the datasets from the {rtrek} package, but we encour
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -60,8 +60,8 @@ tlFootnotes <- tuesdata$tlFootnotes
 
 # Or read in the data manually
 
-tlBooks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-27/tlBooks.csv')
-tlFootnotes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-27/tlFootnotes.csv')
+tlBooks <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-12-27/tlBooks.csv')
+tlFootnotes <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-12-27/tlFootnotes.csv')
 
 # Or load this data and more directly from the rtrek package! 
 # Install it from CRAN via: install.packages("rtrek")

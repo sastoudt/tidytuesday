@@ -15,7 +15,7 @@ The data this week comes from [FiveThirtyEight](https://github.com/fivethirtyeig
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -31,8 +31,8 @@ bechdel <- tuesdata$bechdel
 
 # Or read in the data manually
 
-raw_bechdel <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/raw_bechdel.csv')
-movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/movies.csv')
+raw_bechdel <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-09/raw_bechdel.csv')
+movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-03-09/movies.csv')
 
 ```
 ### Data Dictionary
@@ -89,7 +89,7 @@ movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tid
 
 ### Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 library(jsonlite)
 

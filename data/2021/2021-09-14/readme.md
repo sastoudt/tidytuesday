@@ -48,7 +48,7 @@ Some exploratory graphs by [Azhad Syed](https://towardsdatascience.com/hot-or-no
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -64,7 +64,7 @@ billboard <- tuesdata$billboard
 
 # Or read in the data manually
 
-billboard <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-14/billboard.csv')
+billboard <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-09-14/billboard.csv')
 
 ```
 ### Data Dictionary

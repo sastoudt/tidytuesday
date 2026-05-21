@@ -16,7 +16,7 @@ H/t to [Bob Rudis](https://twitter.com/hrbrmstr/status/1377345728574496769) for 
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -32,7 +32,7 @@ post_offices <- tuesdata$post_offices
 
 # Or read in the data manually
 
-post_offices <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-04-13/post_offices.csv')
+post_offices <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-13/post_offices.csv')
 
 ```
 ### Data Dictionary

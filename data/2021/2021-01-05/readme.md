@@ -14,7 +14,7 @@ The raw data is available as a [Google Sheet](https://docs.google.com/spreadshee
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -30,7 +30,7 @@ transit_cost <- tuesdata$transit_cost
 
 # Or read in the data manually
 
-transit_cost <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-01-05/transit_cost.csv')
+transit_cost <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-01-05/transit_cost.csv')
 
 ```
 ### Data Dictionary

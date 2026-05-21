@@ -52,7 +52,7 @@ The Guardian also published [Animal rescues by London fire brigade rise 20% in p
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -68,7 +68,7 @@ animal_rescues <- tuesdata$animal_rescues
 
 # Or read in the data manually
 
-animal_rescues <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-06-29/animal_rescues.csv')
+animal_rescues <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-06-29/animal_rescues.csv')
 
 ```
 ### Data Dictionary

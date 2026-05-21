@@ -38,7 +38,7 @@ The data this week comes from [arts.gov](https://www.arts.gov/impact/research/ar
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -54,7 +54,7 @@ artists <- tuesdata$artists
 
 # Or read in the data manually
 
-artists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-09-27/artists.csv')
+artists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-09-27/artists.csv')
 
 ```
 ### Data Dictionary

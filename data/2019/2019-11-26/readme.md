@@ -11,11 +11,11 @@ I have uploaded the raw data and the clean data - definitely a nice dive into so
 # Get the data!
 
 ```
-loans <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-11-26/loans.csv")
+loans <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2019/2019-11-26/loans.csv")
 
-# Or read in with tidytuesdayR package (https://github.com/thebioengineer/tidytuesdayR)
+# Or read in with tidytuesdayR package (https://github.com/dslc-io/tidytuesdayR)
 # Either ISO-8601 date or year/week works!
-# Install via devtools::install_github("thebioengineer/tidytuesdayR")
+# Install via pak::pak("dslc-io/tidytuesdayR")
 
 tuesdata <- tidytuesdayR::tt_load("2019-11-26")
 tuesdata <- tidytuesdayR::tt_load(2019, week = 48)
@@ -43,7 +43,7 @@ loans <- tuesdata$loans
 
 # Scripts
 
-```{r}
+```r
 library(tidyverse)
 library(here)
 library(readxl)

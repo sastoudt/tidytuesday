@@ -53,7 +53,7 @@ Examples of analyses are included in [Holland Stam's thesis](https://github.com/
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -69,7 +69,7 @@ arthistory <- tuesdata$arthistory
 
 # Or read in the data manually
 
-artists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-17/artists.csv')
+artists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-01-17/artists.csv')
 
 ```
 ### Data Dictionary

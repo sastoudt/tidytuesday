@@ -46,7 +46,7 @@ The data this week comes from [Kaggle](https://www.kaggle.com/heesoo37/120-years
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -62,7 +62,7 @@ olympics <- tuesdata$olympics
 
 # Or read in the data manually
 
-olympics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-07-27/olympics.csv')
+olympics <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-07-27/olympics.csv')
 
 ```
 ### Data Dictionary

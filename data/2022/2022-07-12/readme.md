@@ -57,7 +57,7 @@ The data this week comes from [Eurocontrol](https://ansperformance.eu/data/). A 
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -73,7 +73,7 @@ flights <- tuesdata$flights
 
 # Or read in the data manually
 
-flights <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-07-12/flights.csv')
+flights <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-07-12/flights.csv')
 
 ```
 

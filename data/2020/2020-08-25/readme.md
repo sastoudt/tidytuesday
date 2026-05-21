@@ -17,7 +17,7 @@ Note the data was joined from two different sources, and there are episodes wher
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -33,7 +33,7 @@ chopped <- tuesdata$chopped
 
 # Or read in the data manually
 
-chopped <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-08-25/chopped.tsv')
+chopped <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2020/2020-08-25/chopped.tsv')
 
 ```
 ### Data Dictionary
@@ -66,7 +66,7 @@ chopped <- readr::read_tsv('https://raw.githubusercontent.com/rfordatascience/ti
 
 ### Cleaning Script
 
-```{r}
+```r
 library(glue)
 library(tidyverse)
 library(rvest)

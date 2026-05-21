@@ -44,7 +44,7 @@ Some initial examples: https://emilhvitfeldt.github.io/elevators/
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -60,7 +60,7 @@ elevators <- tuesdata$elevators
 
 # Or read in the data manually
 
-elevators <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-12-06/elevators.csv')
+elevators <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-12-06/elevators.csv')
 
 ```
 ### Data Dictionary

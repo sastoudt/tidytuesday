@@ -38,7 +38,7 @@ hatttip to [Data is Plural](https://www.data-is-plural.com/archive/2022-04-20-ed
 
 ### Get the data here
 
-```{r}
+```r
 # Get the Data
 
 # Read in with tidytuesdayR package 
@@ -54,10 +54,10 @@ capacity <- tuesdata$capacity
 
 # Or read in the data manually
 
-capacity <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-03/capacity.csv')
-wind <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-03/wind.csv')
-solar <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-03/solar.csv')
-average_cost <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-05-03/average_cost.csv')
+capacity <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-05-03/capacity.csv')
+wind <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-05-03/wind.csv')
+solar <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-05-03/solar.csv')
+average_cost <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2022/2022-05-03/average_cost.csv')
 
 ```
 ### Data Dictionary
@@ -103,7 +103,7 @@ Average cost for each type of power in dollars/MWh
 
 ### Cleaning Script
 
-```{r}
+```r
 library(tidyverse)
 library(readxl)
 
